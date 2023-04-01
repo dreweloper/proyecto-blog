@@ -7,8 +7,19 @@ const port = process.env.PORT;
 
 app.use(cors());
 
+// template engine
+app.set('view engine', 'ejs');
+
+// views folder
+app.set('views', `${__dirname}/views`);
+
 // static folder
 app.use(express.static(`${__dirname}/public`));
+
+// parse application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: false }));
+// parse application/json
+app.use(express.json());
 
 
 // routes
