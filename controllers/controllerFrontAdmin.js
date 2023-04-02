@@ -1,9 +1,25 @@
-// pendiente importar fetch
+const fetchingData = require('../helpers/fetch');
 
 
 const getEntries = async (req, res) => {
 
-    res.render('../views/admin/dashboard-admin.ejs');
+    try {
+
+        const {ok, response} = await fetchingData();
+
+        if(ok){
+
+            res.render('../views/admin/dashboard-admin.ejs', {
+                entries: response.entries
+            });
+
+        };
+        
+    } catch (error) {
+
+        console.log(error);
+        
+    };
 
 }; //!FUNC-GETENTRIES
 
