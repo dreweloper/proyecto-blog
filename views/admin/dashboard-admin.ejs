@@ -1,1 +1,19 @@
-<h1>TÍTULO DEL DASHBOARD-ADMIN</h1>
+<h2>TÍTULO DEL DASHBOARD-ADMIN</h2>
+
+<a href="/dashboard-admin/form-new">Crear entrada</a>
+
+<% if (entries.length > 0) { %>
+
+    <% entries.forEach(item => { %>
+
+        <article>
+            <h3> <%= item.title %> </h3>
+            <p> <%= item.extract %> </p>
+            <p> <%= item.date %> </p>
+            <a href="/dashboard-admin/form-edit/<%= item._id %>">Editar entrada</a>
+            <a href="/dashboard-admin/delete/<%= item._id %>">Eliminar entrada</a>
+        </article>
+     
+    <% }) %>
+ 
+<% } %>
