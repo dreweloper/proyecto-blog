@@ -35,6 +35,33 @@ const getEntries = async (req, res) => {
 }; //!FUNC-GETENTRIES
 
 
+const getEntry = async (req, res) => {
+
+    const id = req.params.id;
+
+    try {
+        
+        const entry = await Entry.findById(id);
+
+            return res.status(200).json({
+                ok: true,
+                entry
+            });
+
+    } catch (error) {
+        
+        console.log(`getEntry controller error: ${error.name}. ${error.message}`);
+
+        return res.status(500).json({
+            ok: false,
+            error
+        });
+
+    };
+
+}; //!FUNC-GETENTRY
+
+
 const addEntry = async (req, res) => { // pendiente: manejo de errores
 
     const newEntry = new Entry(req.body);
@@ -121,6 +148,7 @@ const deleteEntry = async (req, res) => { // pendiente: manejo de errores
 
 module.exports = {
     getEntries,
+    getEntry,
     addEntry,
     updateEntry,
     deleteEntry

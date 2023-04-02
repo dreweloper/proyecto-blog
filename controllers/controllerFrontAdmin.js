@@ -54,7 +54,17 @@ const addEntry = async (req, res) => {
 
 const formUpdateEntry = async (req, res) => {
 
-    res.render('../views/admin/form-edit.ejs');
+    
+
+    try {
+
+
+        
+    } catch (error) {
+
+
+        
+    };
 
 }; //!FUNC-FORMUPDATEENTRY
 
