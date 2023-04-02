@@ -1,16 +1,16 @@
-
+// pendiente importar fetch
 
 
 const getEntries = async (req, res) => {
 
-
+    res.render('../views/admin/dashboard-admin.ejs');
 
 }; //!FUNC-GETENTRIES
 
 
 const formAddEntry = async (req, res) => {
 
-
+    res.render('../views/admin/form-new.ejs');
 
 }; //!FUNC-FORMADDENTRY
 
@@ -24,7 +24,7 @@ const addEntry = async (req, res) => {
 
 const formUpdateEntry = async (req, res) => {
 
-
+    res.render('../views/admin/form-edit.ejs');
 
 }; //!FUNC-FORMUPDATEENTRY
 
