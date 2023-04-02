@@ -7,14 +7,14 @@ const connection = async () => {
 
         const response = await mongoose.connect(process.env.URI_CONNECT);
 
-        console.log('Conectado a la base de datos: MongoDB.');
+        console.log('Conectado a la base de datos: MongoDB');
         return response;
         
     } catch (error) {
 
         return{
             ok: false,
-            msg: 'ERROR: no se ha podido conectar a la base de datos: MongoDB.',
+            msg: 'ERROR: no se ha podido conectar a la base de datos: MongoDB',
             error
         };
         

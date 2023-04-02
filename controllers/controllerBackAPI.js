@@ -7,18 +7,11 @@ const getEntries = async (req, res) => {
 
         const entries = await Entry.find();
 
-        if(entries){
-            return res.status(200).json({
-                ok: true,
-                total: entries.length,
-                entries
-            });
-        } else {
-            return res.status(400).json({
-                ok: false,
-                msg: 'ERROR: no se ha obtenido ninguna entrada.'
-            })
-        };
+        return res.status(200).json({
+            ok: true,
+            total: entries.length,
+            entries
+        });
 
     } catch (error) {
 
