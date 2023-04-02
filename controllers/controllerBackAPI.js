@@ -1,33 +1,33 @@
 
 
 
-const getEntries = async (res, req) => {
+const getEntries = async (req, res) => {
 
-
+    res.send('Capturando la ruta');
 
 }; //!FUNC-GETENTRIES
 
-const getEntry = async (res, req) => {
+const getEntry = async (req, res) => {
 
-
+    res.send('Capturando la ruta');
 
 }; //!FUNC-GETENTRY
 
-const addEntry = async (res, req) => {
+const addEntry = async (req, res) => {
 
-
+    res.send('Capturando la ruta');
 
 }; //!FUNC-ADDENTRY
 
-const updateEntry = async (res, req) => {
+const updateEntry = async (req, res) => {
 
-
+    res.send('Capturando la ruta');
 
 }; //!FUNC-UPDATEENTRY
 
-const deleteEntry = async (res, req) => {
+const deleteEntry = async (req, res) => {
 
-
+    res.send('Capturando la ruta');
 
 }; //!FUNC-DELETEENTRY
 

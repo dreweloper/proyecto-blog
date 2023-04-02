@@ -2,8 +2,14 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
+const connection = require('./helpers/mongodbConnect');
+
+// port config
 const app = express();
 const port = process.env.PORT;
+
+// MongoDB connection
+connection();
 
 app.use(cors());
 
@@ -34,4 +40,4 @@ app.use((req, res, next) => {
 });
 
 
-app.listen(port, () => console.log(`Conectado al puerto: ${port}`));
+app.listen(port, () => console.log(`Servidor a la escucha del puerto: ${port}.`));
