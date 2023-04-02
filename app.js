@@ -30,7 +30,7 @@ app.use(express.json());
 
 
 // routes
-app.use('/api', require('./routes/routeBackAPI'));
+app.use('/api', require('./routers/routerBackAPI'));
 
 // route: 404
 app.use((req, res, next) => {

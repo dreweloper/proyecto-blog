@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const route = Router();
+const router = Router();
 
 const {
     getEntries,
@@ -10,16 +10,16 @@ const {
 
 
 // GET ALL ENTRIES
-route.get('/', getEntries);
+router.get('/', getEntries);
 
 // ADD ENTRY
-route.post('/', addEntry);
+router.post('/', addEntry);
 
 // UPDATE ENTRY
-route.put('/:id', updateEntry);
+router.put('/:id', updateEntry);
 
 // DELETE ENTRY
-route.delete('/:id', deleteEntry);
+router.delete('/:id', deleteEntry);
 
 
-module.exports = route;
+module.exports = router;

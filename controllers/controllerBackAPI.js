@@ -89,7 +89,7 @@ const updateEntry = async (req, res) => { // pendiente: manejo de errores
 }; //!FUNC-UPDATEENTRY
 
 
-const deleteEntry = async (req, res) => {
+const deleteEntry = async (req, res) => { // pendiente: manejo de errores
 
     const id = req.params.id;
 
