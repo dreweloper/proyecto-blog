@@ -34,7 +34,7 @@ const getEntries = async (req, res) => {
 }; //!FUNC-GETENTRIES
 
 
-const addEntry = async (req, res) => { //! pendiente: manejo de errores
+const addEntry = async (req, res) => { // pendiente: manejo de errores
 
     const newEntry = new Entry(req.body);
 
@@ -61,7 +61,7 @@ const addEntry = async (req, res) => { //! pendiente: manejo de errores
 }; //!FUNC-ADDENTRY
 
 
-const updateEntry = async (req, res) => { //! pendiente: manejo de errores
+const updateEntry = async (req, res) => { // pendiente: manejo de errores
 
     const id = req.params.id;
     const body = req.body;
@@ -91,7 +91,27 @@ const updateEntry = async (req, res) => { //! pendiente: manejo de errores
 
 const deleteEntry = async (req, res) => {
 
-    res.send('Capturando la ruta');
+    const id = req.params.id;
+
+    try {
+        
+        await Entry.findByIdAndDelete(id);
+
+        return res.status(200).json({
+            ok: true,
+            msg: 'La entrada se ha eliminado correctamente.'
+        });
+
+    } catch (error) {
+
+        console.log(`deleteEntry controller error: ${error.name}. ${error.message}`);
+        
+        return res.status(500).json({
+            ok: false,
+            error
+        });
+
+    };
 
 }; //!FUNC-DELETEENTRY
 
