@@ -33,7 +33,21 @@ const formAddEntry = async (req, res) => {
 
 const addEntry = async (req, res) => {
 
+    const url = '';
+    const method = 'POST';
+    const body = req.body;
 
+    try {
+
+        await fetchingData(url, method, body);
+        
+    } catch (error) {
+
+        console.log(error);
+        
+    };
+
+    res.redirect('/dashboard-admin');
 
 }; //!FUNC-ADDENTRY
 
