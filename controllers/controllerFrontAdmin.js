@@ -54,15 +54,19 @@ const addEntry = async (req, res) => {
 
 const formUpdateEntry = async (req, res) => {
 
-    
+    const url = req.params.id; // solo necesito el id para completar la url
 
     try {
 
+        const {response} = await fetchingData(url)
 
+        res.render('../views/admin/form-edit.ejs', {
+            entry: response.entry
+        });
         
     } catch (error) {
 
-
+        console.log(error);
         
     };
 
