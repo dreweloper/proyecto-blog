@@ -75,14 +75,41 @@ const formUpdateEntry = async (req, res) => {
 
 const updateEntry = async (req, res) => {
 
+    const url = req.params.id;
+    const method = 'PUT';
+    const body = req.body;
 
+    try {
+
+        await fetchingData(url, method, body);
+        
+    } catch (error) {
+
+        console.log(error);
+        
+    };
+
+    res.redirect('/dashboard-admin');
 
 }; //!FUNC-UPDATEENTRY
 
 
 const deleteEntry = async (req, res) => {
 
+    const url = req.params.id;
+    const method = 'DELETE';
 
+    try {
+        
+        await fetchingData(url, method);
+
+    } catch (error) {
+        
+        console.log(error);
+
+    };
+
+    res.redirect('/dashboard-admin')
 
 }; //!FUNC-DELETEENTRY
 

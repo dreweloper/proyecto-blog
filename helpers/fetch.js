@@ -39,7 +39,7 @@ const fetchingData = async (url = '', method, body = {}) => {
 
     } catch (error) {
 
-        console.log(`Error en el fetch: ${error}`);
+        console.log(`FETCH ERROR: ${error}`);
         
     };
 
