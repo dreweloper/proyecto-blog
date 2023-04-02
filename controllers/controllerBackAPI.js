@@ -10,6 +10,7 @@ const getEntries = async (req, res) => {
         if(entries){
             return res.status(200).json({
                 ok: true,
+                total: entries.length,
                 entries
             });
         } else {
