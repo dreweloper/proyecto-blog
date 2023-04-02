@@ -40,11 +40,12 @@ const addEntry = async (req, res) => { // pendiente: manejo de errores
 
     try {
 
-        await newEntry.save();
+        const entry = await newEntry.save();
 
             return res.status(201).json({
                 ok: true,
-                msg: 'Entrada guardada con éxito.'
+                msg: 'Entrada guardada con éxito.',
+                entry
             });
         
     } catch (error) {
@@ -68,11 +69,12 @@ const updateEntry = async (req, res) => { // pendiente: manejo de errores
 
     try {
         
-        await Entry.findByIdAndUpdate(id, body, {new: true});
+        const entry = await Entry.findByIdAndUpdate(id, body, {new: true});
 
         return res.status(200).json({
             ok: true,
-            msg: 'Entrada actualizada correctamente.'
+            msg: 'Entrada actualizada correctamente.',
+            entry
         });
 
     } catch (error) {
