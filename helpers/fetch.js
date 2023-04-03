@@ -1,6 +1,3 @@
-const urlBase = 'http://localhost:3000/api';
-
-
 const fetchingData = async (url = '', method, body = {}) => {
 
     let options = {};
@@ -24,7 +21,7 @@ const fetchingData = async (url = '', method, body = {}) => {
 
     try {
         
-        const request = await fetch(`${urlBase}/${url}`, options);
+        const request = await fetch(`${process.env.URL_BASE_API}/${url}`, options);
 
         const response = await request.json();
 
