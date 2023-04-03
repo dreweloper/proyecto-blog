@@ -35,7 +35,10 @@ const addEntry = async (req, res) => {
 
     const url = '';
     const method = 'POST';
+    req.body.photo = `${process.env.URL_BASE_MULTER}/${req.file.filename}`; // url del input file (image)
     const body = req.body;
+
+    console.log('BODY:', req.body);
 
     try {
 
