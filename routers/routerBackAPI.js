@@ -3,6 +3,7 @@ const router = Router();
 
 const {
     getEntries,
+    getEntry,
     addEntry,
     updateEntry,
     deleteEntry
@@ -11,6 +12,9 @@ const {
 
 // GET ALL ENTRIES
 router.get('/', getEntries);
+
+// GET ENTRY
+router.get('/:id', getEntry);
 
 // ADD ENTRY
 router.post('/', addEntry);

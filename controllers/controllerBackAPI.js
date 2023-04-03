@@ -7,17 +7,11 @@ const getEntries = async (req, res) => {
 
         const entries = await Entry.find();
 
-        if(entries){
-            return res.status(200).json({
-                ok: true,
-                entries
-            });
-        } else {
-            return res.status(400).json({
-                ok: false,
-                msg: 'ERROR: no se ha obtenido ninguna entrada.'
-            })
-        };
+        return res.status(200).json({
+            ok: true,
+            total: entries.length,
+            entries
+        });
 
     } catch (error) {
 
@@ -32,6 +26,33 @@ const getEntries = async (req, res) => {
     };
 
 }; //!FUNC-GETENTRIES
+
+
+const getEntry = async (req, res) => {
+
+    const id = req.params.id;
+
+    try {
+        
+        const entry = await Entry.findById(id);
+
+            return res.status(200).json({
+                ok: true,
+                entry
+            });
+
+    } catch (error) {
+        
+        console.log(`getEntry controller error: ${error.name}. ${error.message}`);
+
+        return res.status(500).json({
+            ok: false,
+            error
+        });
+
+    };
+
+}; //!FUNC-GETENTRY
 
 
 const addEntry = async (req, res) => { // pendiente: manejo de errores
@@ -97,11 +118,12 @@ const deleteEntry = async (req, res) => { // pendiente: manejo de errores
 
     try {
         
-        await Entry.findByIdAndDelete(id);
+        const entry = await Entry.findByIdAndDelete(id);
 
         return res.status(200).json({
             ok: true,
-            msg: 'La entrada se ha eliminado correctamente.'
+            msg: 'La entrada se ha eliminado correctamente.',
+            entry
         });
 
     } catch (error) {
@@ -120,6 +142,7 @@ const deleteEntry = async (req, res) => { // pendiente: manejo de errores
 
 module.exports = {
     getEntries,
+    getEntry,
     addEntry,
     updateEntry,
     deleteEntry

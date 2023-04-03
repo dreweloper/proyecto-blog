@@ -30,7 +30,8 @@ app.use(express.json());
 
 
 // routes
-app.use('/api', require('./routers/routerBackAPI'));
+app.use('/api', require('./routers/routerBackAPI')); // back
+app.use('/dashboard-admin', require('./routers/routerFrontAdmin')); // front - admin
 
 // route: 404
 app.use((req, res, next) => {
@@ -41,4 +42,4 @@ app.use((req, res, next) => {
 });
 
 
-app.listen(port, () => console.log(`Servidor a la escucha del puerto: ${port}.`));
+app.listen(port, () => console.log(`Servidor a la escucha del puerto: ${port}`));

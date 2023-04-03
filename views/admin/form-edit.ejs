@@ -1,0 +1,17 @@
+<h2>TÍTULO DEL FORM-EDIT</h2>
+
+<form action="/dashboard-admin/update/<%= entry._id %>" method="POST" enctype="multipart/form-data">
+
+    <input id="title" name="title" type="text" placeholder="Título de la entrada" value="<%= entry.title %>">
+
+    <input id="extract" name="extract" type="text" placeholder="Extracto de la entrada" value="<%= entry.extract %>">
+
+    <textarea id="body" name="body" cols="30" rows="10" placeholder="Cuerpo de la entrada"> <%= entry.body %> </textarea>
+
+    <input id="image" name="image" type="file">
+
+    <input id="photo" name="photo" type="hidden" value="<%= entry.photo %>">
+
+    <input type="submit" value="Guardar entrada">
+
+</form>
