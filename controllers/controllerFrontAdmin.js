@@ -33,12 +33,11 @@ const formAddEntry = async (req, res) => {
 
 const addEntry = async (req, res) => {
 
+    req.body.photo = `${process.env.URL_BASE_MULTER}/${req.file.filename}`; // url del input file (image)
+
     const url = '';
     const method = 'POST';
-    req.body.photo = `${process.env.URL_BASE_MULTER}/${req.file.filename}`; // url del input file (image)
     const body = req.body;
-
-    console.log('BODY:', req.body);
 
     try {
 
@@ -77,6 +76,8 @@ const formUpdateEntry = async (req, res) => {
 
 
 const updateEntry = async (req, res) => {
+
+    req.file != undefined ? req.body.photo = `${process.env.URL_BASE_MULTER}/${req.file.filename}` : req.body.photo; // se mantiene la imagen que ya tenía en caso de no subir una nueva
 
     const url = req.params.id;
     const method = 'PUT';
