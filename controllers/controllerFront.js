@@ -2,10 +2,12 @@ const fetchingData = require('../helpers/fetch');
 
 
 const getEntries = async (req, res) => {
+    
+    const url = `${process.env.URL_BASE_API}/`;
 
     try {
 
-        const {ok, response} = await fetchingData();
+        const {ok, response} = await fetchingData(url);
 
         if(ok){
 
@@ -26,16 +28,17 @@ const getEntries = async (req, res) => {
 
 const getEntry = async (req, res) => {
 
-    const id = req.params.id;
-    const url = ''
+    const url = `${process.env.URL_BASE_API}/${req.params.id}`;
 
     try {
         
-        const entry = await fetchingData
+        const entry = await fetchingData(url);
+
+        console.log(entry);
 
     } catch (error) {
         
-
+        console.log(error);
 
     };
 

@@ -1,4 +1,4 @@
-const fetchingData = async (url = '', method, body = {}) => {
+const fetchingData = async (url, method, body = {}) => {
 
     let options = {};
 
@@ -21,7 +21,7 @@ const fetchingData = async (url = '', method, body = {}) => {
 
     try {
         
-        const request = await fetch(`${process.env.URL_BASE_API}/${url}`, options);
+        const request = await fetch(url, options);
 
         const response = await request.json();
 
