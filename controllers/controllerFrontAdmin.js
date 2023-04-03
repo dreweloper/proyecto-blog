@@ -1,4 +1,5 @@
 const fetchingData = require('../helpers/fetch');
+const fs = require('fs').promises;
 
 
 const getEntries = async (req, res) => {
@@ -77,13 +78,23 @@ const formUpdateEntry = async (req, res) => {
 
 const updateEntry = async (req, res) => {
 
-    req.file != undefined ? req.body.photo = `${process.env.URL_BASE_MULTER}/${req.file.filename}` : req.body.photo; // se mantiene la imagen que ya tenía en caso de no subir una nueva
+    // capturar solo el nombre de la imagen
+    let image = req.body.photo.split('/');
+    image = image[image.length-1];
 
+    // variables
     const url = req.params.id;
     const method = 'PUT';
     const body = req.body;
 
     try {
+
+        if(req.file != undefined){
+            await fs.unlink(`./public/images/${image}`); // elimina la imagen anterior
+            req.body.photo = `${process.env.URL_BASE_MULTER}/${req.file.filename}`; // guarda la imagen nueva
+        } else {
+            req.body.photo; // si no hay cambios, se mantiene la url (imagen) que ya está guardada en MongoDB
+        };
 
         await fetchingData(url, method, body);
         
@@ -100,12 +111,17 @@ const updateEntry = async (req, res) => {
 
 const deleteEntry = async (req, res) => {
 
+    // let image = req.body.photo.split('/');
+    // image = image[image.length-1];
+
     const url = req.params.id;
     const method = 'DELETE';
 
     try {
         
-        await fetchingData(url, method);
+        const cosa = await fetchingData(url, method);
+
+        console.log(cosa);
 
     } catch (error) {
         

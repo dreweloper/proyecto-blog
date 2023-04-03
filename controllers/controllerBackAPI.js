@@ -118,11 +118,12 @@ const deleteEntry = async (req, res) => { // pendiente: manejo de errores
 
     try {
         
-        await Entry.findByIdAndDelete(id);
+        const entry = await Entry.findByIdAndDelete(id);
 
         return res.status(200).json({
             ok: true,
-            msg: 'La entrada se ha eliminado correctamente.'
+            msg: 'La entrada se ha eliminado correctamente.',
+            entry
         });
 
     } catch (error) {
