@@ -8,6 +8,7 @@
 
         <article>
             <h3> <%= item.title %> </h3>
+            <img src="<%= item.photo %>" alt="">
             <p> <%= item.extract %> </p>
             <p> <%= item.date %> </p>
             <a href="/dashboard-admin/form-edit/<%= item._id %>">Editar entrada</a>
