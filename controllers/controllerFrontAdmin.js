@@ -78,14 +78,13 @@ const formUpdateEntry = async (req, res) => {
 
 const updateEntry = async (req, res) => {
 
-    // capturar solo el nombre de la imagen
-    let image = req.body.photo.split('/');
-    image = image[image.length-1];
-
     // variables
     const url = req.params.id;
     const method = 'PUT';
     const body = req.body;
+
+    let image = req.body.photo.split('/'); // separo la url de la propiedad 'photo'
+    image = image[image.length-1]; // guardo en la variable solo el nombre de la imagen
 
     try {
 
@@ -93,7 +92,7 @@ const updateEntry = async (req, res) => {
             await fs.unlink(`./public/images/${image}`); // elimina la imagen anterior
             req.body.photo = `${process.env.URL_BASE_MULTER}/${req.file.filename}`; // guarda la imagen nueva
         } else {
-            req.body.photo; // si no hay cambios, se mantiene la url (imagen) que ya está guardada en MongoDB
+            req.body.photo; // si no hay cambios, se mantiene la url de la imagen que ya está guardada en MongoDB (propiedad 'photo')
         };
 
         await fetchingData(url, method, body);
@@ -118,8 +117,8 @@ const deleteEntry = async (req, res) => {
         
         const { response } = await fetchingData(url, method);
 
-        let image = response.entry.photo.split('/');
-        image = image[image.length-1];
+        let image = response.entry.photo.split('/'); // separo la url de la propiedad 'photo'
+        image = image[image.length-1]; // guardo en la variable solo el nombre de la imagen
         await fs.unlink(`./public/images/${image}`); // eliminar imagen de la carpeta
 
     } catch (error) {
