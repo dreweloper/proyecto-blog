@@ -32,9 +32,15 @@ const getEntry = async (req, res) => {
 
     try {
         
-        const entry = await fetchingData(url);
+        const {ok, response} = await fetchingData(url);
 
-        console.log(entry);
+        if(ok){
+
+            res.render('./entry.ejs', {
+                entry: response.entry
+            });
+
+        };
 
     } catch (error) {
         
