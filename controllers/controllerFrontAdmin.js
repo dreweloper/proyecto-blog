@@ -111,17 +111,16 @@ const updateEntry = async (req, res) => {
 
 const deleteEntry = async (req, res) => {
 
-    // let image = req.body.photo.split('/');
-    // image = image[image.length-1];
-
     const url = req.params.id;
     const method = 'DELETE';
 
     try {
         
-        const cosa = await fetchingData(url, method);
+        const { response } = await fetchingData(url, method);
 
-        console.log(cosa);
+        let image = response.entry.photo.split('/');
+        image = image[image.length-1];
+        await fs.unlink(`./public/images/${image}`); // eliminar imagen de la carpeta
 
     } catch (error) {
         
