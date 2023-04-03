@@ -1,0 +1,40 @@
+<%- include('./templates/header.ejs') %>
+
+<%- include('./templates/nav.ejs') %>
+
+<section class="search-bar">
+
+    <form action="" method="">
+        <input id="text-search-bar" name="text-search-bar" type="search" placeholder="Buscador de entradas">
+        <input id="submit-search-bar" type="submit">
+    </form>
+
+</section>
+
+<section class="grid-container">
+
+    <% if (entries.length > 0) { %>
+     
+        <% entries.forEach(entry => { %>
+
+            <article class="grid-item">
+                <h2> <%= entry.title %> </h2>
+                <p> <%= entry.date %> </p>
+                <img src="<%= entry.photo %>" alt="<%= entry.title %>">
+                <p> <%= entry.extract %> </p>
+                <a href="/entry/<%= entry._id %>">Leer más</a>
+            </article>
+
+        <% }) %>
+
+    <% } else { %>
+     
+        <p> No hay entradas… </p>
+
+    <% } %>
+
+</section>
+
+
+
+<%- include('./templates/footer.ejs') %>
