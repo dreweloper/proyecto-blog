@@ -54,18 +54,25 @@ const getEntry = async (req, res) => {
 const searchEntries = async (req, res) => {
 
     const url = `${process.env.URL_BASE_API}/?search=${req.query.search}`; // "obligo" al fetch a que entre por el 'if' del controller getEntries del back (Object.keys(req.query).length != 0)
-    console.log('FRONT:', req.body, req.params, req.query)
     
     try {
 
-        const { response } = await fetchingData(url);
+        if(req.query.search != ''){ // solución temporal hasta que aplique el check (express-validator) al input del buscador
 
-        const {total, entries} = response;
+            const { response } = await fetchingData(url);
 
-        res.render('result', {
-            total,
-            entries
-        });
+            const {total, entries} = response;
+
+            res.render('result', {
+                total,
+                entries
+            });
+
+        } else {
+
+            res.redirect('/'); // solución temporal hasta que aplique el check (express-validator) al input del buscador
+
+        };
         
     } catch (error) {
 
@@ -76,16 +83,8 @@ const searchEntries = async (req, res) => {
 }; //!FUNC-SEARCHENTRIES
 
 
-const showResult = async (req, res) => {
-
-    res.render('result');
-
-}; //!FUNC-SHOWRESULT
-
-
 module.exports = {
     getEntries,
     getEntry,
     searchEntries,
-    showResult
 };

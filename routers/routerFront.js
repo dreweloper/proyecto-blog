@@ -5,7 +5,6 @@ const {
     getEntries,
     getEntry,
     searchEntries,
-    showResult
 } = require('../controllers/controllerFront');
 
 
@@ -15,11 +14,8 @@ router.get('/', getEntries);
 // ENTRY DETAIL
 router.get('/entry/:id', getEntry);
 
-// TO SEARCH
+// SEARCH - SHOW RESULT
 router.get('/search', searchEntries); // action form value
-
-// SEARCH RESULTS
-router.get('/search?search=', showResult);
 
 
 module.exports = router;
