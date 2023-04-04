@@ -51,7 +51,41 @@ const getEntry = async (req, res) => {
 }; //!FUNC-GETENTRY
 
 
+const searchEntries = async (req, res) => {
+
+    const url = `${process.env.URL_BASE_API}/`;
+    // const method = 'GET';
+    // const body = req.query.search;
+    console.log('FRONT:', req.body, req.params, req.query)
+    
+
+    try {
+
+        const { response } = await fetchingData(url);
+
+        //console.log(response);
+        
+    } catch (error) {
+
+        console.log(error);
+        
+    };
+
+    res.redirect('/search-result');
+
+}; //!FUNC-SEARCHENTRIES
+
+
+const showResult = async (req, res) => {
+
+    res.render('../views/results.ejs');
+
+}; //!FUNC-SHOWRESULT
+
+
 module.exports = {
     getEntries,
-    getEntry
+    getEntry,
+    searchEntries,
+    showResult
 };

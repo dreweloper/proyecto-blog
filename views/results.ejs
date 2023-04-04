@@ -1,0 +1,14 @@
+<%- include('./templates/header.ejs') %>
+
+<%- include('./templates/nav.ejs') %>
+
+<section class="search-bar">
+
+    <form action="/search" method="POST">
+        <input id="search" name="search" type="search" placeholder="Buscador de entradas">
+        <input id="submit-search" name="submit-search" type="submit">
+    </form>
+
+</section>
+
+<%- include('./templates/footer.ejs') %>
