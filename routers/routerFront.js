@@ -19,7 +19,7 @@ router.get('/entry/:id', getEntry);
 router.get('/search', searchEntries); // action form value
 
 // SEARCH RESULTS
-router.get('/search-result', showResult);
+router.get('/search?search=', showResult);
 
 
 module.exports = router;

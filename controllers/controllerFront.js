@@ -11,7 +11,7 @@ const getEntries = async (req, res) => {
 
         if(ok){
 
-            res.render('./index.ejs', {
+            res.render('index', {
                 entries: response.entries
             });
 
@@ -36,7 +36,7 @@ const getEntry = async (req, res) => {
 
         if(ok){
 
-            res.render('./entry.ejs', {
+            res.render('entry.ejs', {
                 entry: response.entry
             });
 
@@ -60,12 +60,12 @@ const searchEntries = async (req, res) => {
 
         const { response } = await fetchingData(url);
 
-        console.log('RESPONSE:', response);
+        const {total, entries} = response;
 
-        // res.render('results', {
-        //     total: response.total,
-        //     entries: response.entries
-        // })
+        res.render('results', {
+            total,
+            entries
+        });
         
     } catch (error) {
 
@@ -73,14 +73,12 @@ const searchEntries = async (req, res) => {
         
     };
 
-    res.redirect('/search-result');
-
 }; //!FUNC-SEARCHENTRIES
 
 
 const showResult = async (req, res) => {
 
-    res.render('../views/results.ejs');
+    res.render('results');
 
 }; //!FUNC-SHOWRESULT
 
