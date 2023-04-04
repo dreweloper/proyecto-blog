@@ -1,0 +1,38 @@
+<%- include('./templates/header.ejs') %>
+
+<%- include('./templates/nav.ejs') %>
+
+<section class="search-bar">
+
+    <form action="/search" method="GET">
+        <input id="search" name="search" type="text" placeholder="Buscador de entradas">
+        <input type="submit" value="Buscar">
+    </form>
+
+</section>
+
+<section class="grid-container">
+
+    <% if (total > 0) { %>
+     
+        <% entries.forEach(entry => { %>
+
+            <article class="grid-item">
+                <h2> <%= entry.title %> </h2>
+                <p> <%= entry.date %> </p>
+                <img src="<%= entry.photo %>" alt="<%= entry.title %>" title="<%= entry.title %>">
+                <p> <%= entry.extract %> </p>
+                <a href="/entry/<%= entry._id %>">Leer más</a>
+            </article>
+         
+        <% }) %>
+
+    <% } else { %>
+     
+        <p> No hay resultados… </p>
+
+    <% } %>
+
+</section>
+
+<%- include('./templates/footer.ejs') %>

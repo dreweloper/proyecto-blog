@@ -6,7 +6,7 @@ const {
     getEntry,
     addEntry,
     updateEntry,
-    deleteEntry
+    deleteEntry,
 } = require('../controllers/controllerBackAPI');
 
 
