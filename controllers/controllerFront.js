@@ -53,17 +53,19 @@ const getEntry = async (req, res) => {
 
 const searchEntries = async (req, res) => {
 
-    const url = `${process.env.URL_BASE_API}/`;
-    // const method = 'GET';
-    // const body = req.query.search;
+    const url = `${process.env.URL_BASE_API}/?search=${req.query.search}`; // "obligo" al fetch a que entre por el 'if' del controller getEntries del back (Object.keys(req.query).length != 0)
     console.log('FRONT:', req.body, req.params, req.query)
     
-
     try {
 
         const { response } = await fetchingData(url);
 
-        //console.log(response);
+        console.log('RESPONSE:', response);
+
+        // res.render('results', {
+        //     total: response.total,
+        //     entries: response.entries
+        // })
         
     } catch (error) {
 
