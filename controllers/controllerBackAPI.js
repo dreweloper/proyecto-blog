@@ -18,11 +18,19 @@ const getEntries = async (req, res) => {
 
         } else {
 
-            const entries = await Entry.find();
+            const { page = 1, limit = 3 } = req.query;
+
+            const entries = await Entry.find()
+            .limit(limit * 1)
+            .skip((page - 1) * limit);
+
+            const count = await Entry.count(); // total documentos en la colección (MongoDB)
 
             return res.status(200).json({
                 ok: true,
-                entries
+                currentPage: page,
+                totalPages: Math.ceil(count / limit),
+                entries,
             });
 
         };

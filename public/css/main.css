@@ -142,7 +142,7 @@ img{
 /***** BOTONES PAGINACIÓN START *****/
 
 
-.pagination{
+.paginate{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,7 +152,7 @@ img{
     margin-bottom: 10px;
 }
 
-.pagination > a{
+.paginate > a{
     padding: 10px;
 }
 
