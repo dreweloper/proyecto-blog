@@ -62,7 +62,7 @@ const searchEntries = async (req, res) => {
 
         const {total, entries} = response;
 
-        res.render('results', {
+        res.render('result', {
             total,
             entries
         });
@@ -78,7 +78,7 @@ const searchEntries = async (req, res) => {
 
 const showResult = async (req, res) => {
 
-    res.render('results');
+    res.render('result');
 
 }; //!FUNC-SHOWRESULT
 
