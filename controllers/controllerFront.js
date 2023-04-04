@@ -61,11 +61,9 @@ const searchEntries = async (req, res) => {
 
             const { response } = await fetchingData(url);
 
-            const {total, entries} = response;
-
             res.render('result', {
-                total,
-                entries
+                entries: response.entries,
+                search: req.query.search
             });
 
         } else {

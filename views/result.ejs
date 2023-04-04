@@ -13,7 +13,9 @@
 
 <section class="grid-container">
 
-    <% if (total > 0) { %>
+    <% if (entries.length > 0) { %>
+
+        <p>Resultados con la palabra <strong><%= search %></strong>:</p>
      
         <% entries.forEach(entry => { %>
 
@@ -29,7 +31,7 @@
 
     <% } else { %>
      
-        <p> No hay resultados… </p>
+        <p>No se ha encontrado ninguna entrada que contenga la palabra <strong><%= search %></strong>.</p>
 
     <% } %>
 

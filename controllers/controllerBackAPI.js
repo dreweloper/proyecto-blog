@@ -13,7 +13,6 @@ const getEntries = async (req, res) => {
 
             return res.status(200).json({
                 ok: true,
-                total: entries.length,
                 entries
             });
 
@@ -23,7 +22,6 @@ const getEntries = async (req, res) => {
 
             return res.status(200).json({
                 ok: true,
-                total: entries.length,
                 entries
             });
 
