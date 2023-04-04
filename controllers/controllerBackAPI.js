@@ -3,13 +3,13 @@ const Entry = require('../models/modelEntry');
 
 const getEntries = async (req, res) => {
 
-    const search = new RegExp(req.body.search, 'i'); // creo una expresión regular a partir de la string recibida en req.body
+    const search = new RegExp(req.body.search, 'i'); // creo una expresión regular a partir de la string recibida en req.body y se la paso como valor al primer 'find()'
 
-    try { //! quizás cambiar el orden del if y empezar por == 0 y luego != 0 con el else para indicar que no se encontraron datos (buscador)
+    try {
 
-        if(Object.keys(req.body).length != 0){ // si req.body (object) no está vacío, buscará en MongoDB según el valor del search
+        if(Object.keys(req.body).length != 0){ // si req.body (object) no está vacío, buscará en MongoDB según el valor del search; en caso contrario, entra en el 'else'
 
-            const entries = await Entry.find( { $or: [ { title: search }, { body: search } ] } );
+            const entries = await Entry.find( { $or: [ { title: search }, { body: search } ] } ); // si lo que busca (search) lo encuentra (find()) en 'title' o en 'body', lo devuelve (return)
 
             return res.status(200).json({
                 ok: true,
