@@ -5,13 +5,21 @@ const getEntries = async (req, res) => {
 
     try {
 
-        const entries = await Entry.find();
+        if(Object.keys(req.body).length != 0){ // si req.body no está vacío, buscará en MongoDB según el valor del search-bar
 
-        return res.status(200).json({
-            ok: true,
-            total: entries.length,
-            entries
-        });
+            console.log(req.body)
+
+        } else {
+
+            const entries = await Entry.find();
+
+            return res.status(200).json({
+                ok: true,
+                total: entries.length,
+                entries
+            });
+
+        };
 
     } catch (error) {
 
