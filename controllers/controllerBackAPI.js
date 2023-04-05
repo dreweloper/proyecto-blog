@@ -9,8 +9,6 @@ const getEntries = async (req, res) => {
     const page = req.query.page || 1; // si 'req.query.page' es 'undefined', establezco por defecto que siempre empiece en la página 1
     const limit = req.query.limit || 3; // si 'req.query.limit' es 'undefined', establezco por defecto en 3 el límite de documentos por página
 
-    console.log('GET ENTRIES BACK:', 'PAGE:', req.query.page, 'LIMIT:', req.query.limit);
-
     // try/catch mongoose
     try {
 
@@ -31,8 +29,6 @@ const getEntries = async (req, res) => {
         } else {
 
             const entries = await Entry.paginate( {}, { limit, page } ); 
-
-            //console.log('ENTRIES - ELSE (BACK CONTROLLER):', entries);
 
             return res.status(200).json({
                 ok: true,

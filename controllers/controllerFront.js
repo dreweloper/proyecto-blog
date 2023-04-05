@@ -2,16 +2,12 @@ const fetchingData = require('../helpers/fetch');
 
 
 const getEntries = async (req, res) => {
-
-    console.log('BODY:', req.body);
     
-    const url = `${process.env.URL_BASE_API}/?page=1&limit=1`;
+    const url = `${process.env.URL_BASE_API}/?page=${req.query.page}`; // pasándole el valor de 'req.query.page' avanza o retrocede, según lo que reciba, en la paginación de MongoDB
 
     try {
 
         const { response } = await fetchingData(url);
-
-        //console.log('RESPONSE.ENTRIES FRONT:', response.entries);
 
         res.render('index', {
             entries: response.entries.docs

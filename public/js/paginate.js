@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let page = 1;
 
 
-
     //*** EVENTOS ***//
 
     document.addEventListener('click', ({target}) => {
@@ -38,11 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const { ok, entries } = await request.json();
 
-            console.log(entries);
-
             const { prevPage, nextPage } = entries;
 
             if(ok){
+
+                location.href = `http://localhost:3000/?page=${page}`;
 
                 return btnsPagination(prevPage, page, nextPage);
 
@@ -87,9 +86,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }; //!FUNC-BTNSPAGINATION
 
 
-    const init = async () => {
+    const init = () => {
 
-        await fetchingData();
+        console.log(location.search);
+
+        if(location.href == 'http://localhost:3000/'){
+            
+            btnsPagination(null, 1, !null);
+
+        };
 
     }; //!FUNC-INIT
 
