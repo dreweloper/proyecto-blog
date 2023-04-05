@@ -4,7 +4,7 @@ const fs = require('fs').promises;
 
 const getEntries = async (req, res) => {
 
-    const url = `${process.env.URL_BASE_API}/`;
+    const url = `${process.env.URL_BASE_API}/?limit=20`;
 
     try {
 
