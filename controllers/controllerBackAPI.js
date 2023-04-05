@@ -6,8 +6,8 @@ const getEntries = async (req, res) => {
     // variables
     const search = new RegExp(`${req.query.search}`, 'i'); // creo una expresión regular a partir de la string recibida en req.body y se la paso como valor al primer 'find()'
 
-    const limit = req.query.limit || 3;
-    const page = req.query.page || 1;
+    const limit = req.query.limit || 3; // si 'req.query.limit' es 'undefined', establezco por defecto en 3 el límite de documentos por página
+    const page = req.query.page || 1; // si 'req.query.page' es 'undefined', establezco por defecto que siempre empiece en la página 1
 
     console.log('REQ.QUERY (BACK CONTROLLER):', req.query.search);
 
@@ -18,7 +18,7 @@ const getEntries = async (req, res) => {
 
             const entries = await Entry.paginate( // si lo que busca ("search") lo encuentra en "title", "extract" o "body", lo devuelve (return)
                 { $or: [ { title: search }, { extract: search }, { body: search } ] },
-                { limit, page } 
+                { limit, page } // 'options' del método 'paginate' donde indico los valores (const limit, page) de las propiedades "limit" y "page"
             );
 
             console.log('ENTRIES - IF (BACK CONTROLLER):', entries);
@@ -30,9 +30,9 @@ const getEntries = async (req, res) => {
 
         } else {
 
-            const entries = await Entry.paginate(); // utilizo el método 'paginate()' (funciona igual que el 'find()') del módulo 'mongoose-paginate-v2' para la paginación automática
+            const entries = await Entry.paginate( {}, { limit, page } ); // utilizo el método 'paginate()' (funciona igual que el 'find()') del módulo 'mongoose-paginate-v2' para la paginación auto
 
-            console.log('ENTRIES - ELSE (BACK CONTROLLER):', entries);
+            //console.log('ENTRIES - ELSE (BACK CONTROLLER):', entries);
 
             return res.status(200).json({
                 ok: true,

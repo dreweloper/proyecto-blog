@@ -9,7 +9,7 @@ const getEntries = async (req, res) => {
 
         const { response } = await fetchingData(url);
 
-        console.log('RESPONSE.ENTRIES FRONT:', response.entries);
+        //console.log('RESPONSE.ENTRIES FRONT:', response.entries);
 
         res.render('index', {
             entries: response.entries.docs

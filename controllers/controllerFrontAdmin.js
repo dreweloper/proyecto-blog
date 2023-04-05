@@ -13,7 +13,7 @@ const getEntries = async (req, res) => {
         if(ok){
 
             res.render('../views/admin/dashboard-admin.ejs', {
-                entries: response.entries
+                entries: response.entries.docs
             });
 
         };

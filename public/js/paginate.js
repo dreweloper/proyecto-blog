@@ -24,7 +24,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //*** FUNCIONES ***//
 
+    const fetchingData = async () => {
 
+        try {
 
+            const request = await fetch('http://localhost:3000/api');
 
-}); //LOAD
+            const { ok, entries } = await request.json();
+
+            if(ok){
+                console.log(entries);
+                return entries;
+
+            } else {
+                  
+                throw error;
+            };
+            
+        } catch (error) {
+
+            console.log(error);
+
+        };
+
+    }; //!FUNC-FETCHINGDATA
+
+    fetchingData();
+
+}); //!LOAD
