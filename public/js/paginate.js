@@ -51,6 +51,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }; //!FUNC-FETCHINGDATA
 
-    fetchingData();
+
+    const init = async () => {
+
+        await fetchingData();
+
+    };
+
+    //init();
 
 }); //!LOAD
