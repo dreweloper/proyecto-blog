@@ -1,22 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    
     //*** VARIABLES ***//
+
     const divPagination = document.querySelector('#paginate');
-    // const prevBtn = document.querySelector('#btn-prev');
-    // const nextBtn = document.querySelector('#btn-next');
-    const page = 1;
+    let page = 1;
 
 
 
     //*** EVENTOS ***//
+
     document.addEventListener('click', ({target}) => {
 
         if(target.matches('#btn-prev')){
-
+            page -= 1
+            fetchingData(page);
         };
 
         if(target.matches('#btn-next')){
-            console.log('Botón next')
+            page += 1
+            fetchingData(page);
         };
 
     }); //!EV-CLICK
@@ -25,9 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //*** FUNCIONES ***//
 
-    const fetchingData = async (page = 1, limit = 3) => { //? pendiente quitar los valores por defecto
+    const fetchingData = async (page = 1) => {
 
-        const url = `http://localhost:3000/api/?page=${page}&limit=${limit}`
+        const url = `http://localhost:3000/api/?page=${page}&limit=3`
 
         try {
 
@@ -35,9 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const { ok, entries } = await request.json();
 
+            const { prevPage, page, nextPage } = entries;
+
             if(ok){
-                console.log(entries);
-                return entries;
+
+                return btnsPagination(prevPage, page, nextPage);
 
             } else {
 
@@ -53,14 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }; //!FUNC-FETCHINGDATA
 
 
-    const btnsPagination = async (page, prevPage, nextPage) => {
+    const btnsPagination = (prevPage, page, nextPage) => {
 
         divPagination.innerHTML = '';
 
         if(prevPage != null){
             const btnPrev = document.createElement('BUTTON');
             btnPrev.id = 'btn-prev';
-            btnPrev.textContent = 'PREV BTN';
+            btnPrev.textContent = '<<';
             divPagination.append(btnPrev);
         };
 
@@ -71,9 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(nextPage != null){
             const btnNext = document.createElement('BUTTON');
             btnNext.id = 'btn-next';
-            btnNext.textContent = 'NEXT BTN'
-            console.log('Pintar botón next');
-        } else {
+            btnNext.textContent = '>>'
             divPagination.append(btnNext);
         };
 
@@ -86,6 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }; //!FUNC-INIT
 
+
     init();
+
 
 }); //!LOAD
