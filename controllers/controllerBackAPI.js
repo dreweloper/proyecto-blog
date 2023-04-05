@@ -7,7 +7,7 @@ const getEntries = async (req, res) => {
 
     try {
 
-        if(Object.keys(req.query).length != 0){ // si req.body (object) no está vacío, buscará en MongoDB según el valor del search; en caso contrario, entra en el 'else'
+        if(Object.keys(req.query).length != 0){ // si req.query (object) no está vacío, buscará en MongoDB según el valor del search; en caso contrario, entra en el 'else'
 
             const entries = await Entry.find( { $or: [ { title: search }, { extract: search }, { body: search } ] } ); // si lo que busca (search) lo encuentra (find()) en 'title' o en 'body', lo devuelve (return)
 
