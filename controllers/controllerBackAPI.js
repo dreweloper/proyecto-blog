@@ -5,9 +5,11 @@ const getEntries = async (req, res) => {
 
     const search = new RegExp(`${req.query.search}`, 'i'); // creo una expresión regular a partir de la string recibida en req.body y se la paso como valor al primer 'find()'
 
+    console.log('REQ.QUERY BACK:', req.query.search);
+
     try {
 
-        if(Object.keys(req.query).length != 0){ // si req.query (object) no está vacío, buscará en MongoDB según el valor del search; en caso contrario, entra en el 'else'
+        if(req.query.search != undefined){ // si la propiedad "search" existe en el objeto "req.query", buscará en MongoDB según su valor (de "search"); en caso contrario, entra en el 'else'
 
             const entries = await Entry.find( { $or: [ { title: search }, { extract: search }, { body: search } ] } ); // si lo que busca (search) lo encuentra (find()) en 'title' o en 'body', lo devuelve (return)
 
