@@ -3,27 +3,33 @@ const Entry = require('../models/modelEntry');
 
 const getEntries = async (req, res) => {
 
+    // variables
     const search = new RegExp(`${req.query.search}`, 'i'); // creo una expresión regular a partir de la string recibida en req.body y se la paso como valor al primer 'find()'
 
+    const page = req.query.page || 1; // si 'req.query.page' es 'undefined', establezco por defecto que siempre empiece en la página 1
+    const limit = req.query.limit || 3; // si 'req.query.limit' es 'undefined', establezco por defecto en 3 el límite de documentos por página
+
+    // try/catch mongoose
     try {
 
-        if(Object.keys(req.query).length != 0){ // si req.body (object) no está vacío, buscará en MongoDB según el valor del search; en caso contrario, entra en el 'else'
+        if(req.query.search != undefined){ // si la propiedad "search" existe en el objeto "req.query", buscará en MongoDB según su valor (de "search"); en caso contrario, entra en el 'else'
 
-            const entries = await Entry.find( { $or: [ { title: search }, { body: search } ] } ); // si lo que busca (search) lo encuentra (find()) en 'title' o en 'body', lo devuelve (return)
+            const entries = await Entry.paginate( // utilizo el método 'paginate()' (funciona igual que el 'find()') del módulo 'mongoose-paginate-v2' para la paginación automática
+                { $or: [ { title: search }, { extract: search }, { body: search } ] }, // si lo que busca ("search") lo encuentra en "title", "extract" o "body", lo devuelve (return)
+                { page, limit } // 'options' del método 'paginate' donde indico los valores (const limit, page) de las propiedades "limit" y "page"
+            );
 
             return res.status(200).json({
                 ok: true,
-                total: entries.length,
                 entries
             });
 
         } else {
 
-            const entries = await Entry.find();
+            const entries = await Entry.paginate( {}, { limit, page } ); 
 
             return res.status(200).json({
                 ok: true,
-                total: entries.length,
                 entries
             });
 

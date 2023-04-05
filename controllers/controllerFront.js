@@ -3,19 +3,15 @@ const fetchingData = require('../helpers/fetch');
 
 const getEntries = async (req, res) => {
     
-    const url = `${process.env.URL_BASE_API}/`;
+    const url = `${process.env.URL_BASE_API}/?page=${req.query.page}`; // pasándole el valor de 'req.query.page' avanza o retrocede, según lo que reciba, en la paginación de MongoDB
 
     try {
 
-        const {ok, response} = await fetchingData(url);
+        const { response } = await fetchingData(url);
 
-        if(ok){
-
-            res.render('index', {
-                entries: response.entries
-            });
-
-        };
+        res.render('index', {
+            entries: response.entries.docs
+        });
         
     } catch (error) {
 
@@ -61,11 +57,11 @@ const searchEntries = async (req, res) => {
 
             const { response } = await fetchingData(url);
 
-            const {total, entries} = response;
+            console.log('SEARCH FRONT:', response.entries);
 
             res.render('result', {
-                total,
-                entries
+                entries: response.entries.docs,
+                search: req.query.search
             });
 
         } else {

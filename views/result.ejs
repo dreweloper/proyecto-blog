@@ -13,7 +13,9 @@
 
 <section class="grid-container">
 
-    <% if (total > 0) { %>
+    <% if (entries.length > 0) { %>
+
+        <p>Se han encontrado <strong><%= entries.length %></strong> resultados con la palabra <strong><%= search %></strong>:</p>
      
         <% entries.forEach(entry => { %>
 
@@ -29,10 +31,14 @@
 
     <% } else { %>
      
-        <p> No hay resultados… </p>
+        <p>No se han encontrado entradas que contengan la palabra <strong><%= search %></strong>.</p>
 
     <% } %>
 
 </section>
+
+<div id="paginate" class="paginate">
+    <!-- botones paginación -->
+</div>
 
 <%- include('./templates/footer.ejs') %>

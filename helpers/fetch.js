@@ -20,6 +20,8 @@ const fetchingData = async (url, method, body = {}) => {
     // fetch
 
     try {
+
+        console.log('FETCH URL:', url);
         
         const request = await fetch(url, options);
 
