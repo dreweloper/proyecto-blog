@@ -16,10 +16,8 @@ const getEntries = async (req, res) => {
 
             const entries = await Entry.paginate( // utilizo el método 'paginate()' (funciona igual que el 'find()') del módulo 'mongoose-paginate-v2' para la paginación automática
                 { $or: [ { title: search }, { extract: search }, { body: search } ] }, // si lo que busca ("search") lo encuentra en "title", "extract" o "body", lo devuelve (return)
-                { limit, page } // 'options' del método 'paginate' donde indico los valores (const limit, page) de las propiedades "limit" y "page"
+                { page, limit } // 'options' del método 'paginate' donde indico los valores (const limit, page) de las propiedades "limit" y "page"
             );
-
-            console.log('ENTRIES - IF (BACK CONTROLLER):', entries);
 
             return res.status(200).json({
                 ok: true,
