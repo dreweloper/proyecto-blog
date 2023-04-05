@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //*** VARIABLES ***//
 
     const divPagination = document.querySelector('#paginate');
-    let page = 1;
+
 
 
     //*** EVENTOS ***//
@@ -12,13 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', ({target}) => {
 
         if(target.matches('#btn-prev')){
-            page -= 1
+            let page = target.dataset.page;
             fetchingData(page);
+            return location.href = `http://localhost:3000/?page=${page}`; //? return
         };
 
         if(target.matches('#btn-next')){
-            page += 1
+            let page = target.dataset.page;
             fetchingData(page);
+            return location.href = `http://localhost:3000/?page=${page}`; //? return
         };
 
     }); //!EV-CLICK
@@ -37,11 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const { ok, entries } = await request.json();
 
-            const { prevPage, nextPage } = entries;
+            const { prevPage, page, nextPage } = entries;
 
             if(ok){
-
-                location.href = `http://localhost:3000/?page=${page}`;
 
                 return btnsPagination(prevPage, page, nextPage);
 
@@ -59,14 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }; //!FUNC-FETCHINGDATA
 
 
-    const btnsPagination = (prevPage, page, nextPage) => {
+    const btnsPagination = async (prevPage, page, nextPage) => {
 
         divPagination.innerHTML = '';
 
         if(prevPage != null){
             const btnPrev = document.createElement('BUTTON');
             btnPrev.id = 'btn-prev';
-            btnPrev.dataset['page'] = page -1;
+            btnPrev.dataset['page'] = page - 1;
             btnPrev.textContent = '<<';
             divPagination.append(btnPrev);
         };
@@ -88,11 +88,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const init = () => {
 
-        console.log(location.search);
+        if(location.search == ''){ // de esta forma solo entra cuando carga el index
 
-        if(location.href == 'http://localhost:3000/'){
+            return btnsPagination(null, 1, !null); // con el 'return' ya no entra en el 'if' al hacer click en el botón 'next'
+
+        } else {
+
+            let params = new URLSearchParams(location.search);
+            let page = params.get('page');
             
-            btnsPagination(null, 1, !null);
+            return fetchingData(page);
 
         };
 
