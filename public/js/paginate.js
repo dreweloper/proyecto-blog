@@ -24,11 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //*** FUNCIONES ***//
 
-    const fetchingData = async () => {
+    const fetchingData = async (page = 1, limit = 3) => {
+
+        const url = `http://localhost:3000/api/?page=${page}&limit=${limit}`
 
         try {
 
-            const request = await fetch('http://localhost:3000/api');
+            const request = await fetch(url);
 
             const { ok, entries } = await request.json();
 
@@ -37,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return entries;
 
             } else {
-                  
+
                 throw error;
             };
             
