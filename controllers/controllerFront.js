@@ -2,8 +2,10 @@ const fetchingData = require('../helpers/fetch');
 
 
 const getEntries = async (req, res) => {
+
+    console.log('BODY:', req.body);
     
-    const url = `${process.env.URL_BASE_API}/?page=1&limit=3`;
+    const url = `${process.env.URL_BASE_API}/?page=1&limit=1`;
 
     try {
 

@@ -11,15 +11,13 @@ const getEntries = async (req, res) => {
 
     console.log('GET ENTRIES BACK:', 'PAGE:', req.query.page, 'LIMIT:', req.query.limit);
 
-    console.log('REQ.QUERY (BACK CONTROLLER):', req.query.search);
-
     // try/catch mongoose
     try {
 
         if(req.query.search != undefined){ // si la propiedad "search" existe en el objeto "req.query", buscará en MongoDB según su valor (de "search"); en caso contrario, entra en el 'else'
 
-            const entries = await Entry.paginate( // si lo que busca ("search") lo encuentra en "title", "extract" o "body", lo devuelve (return)
-                { $or: [ { title: search }, { extract: search }, { body: search } ] },
+            const entries = await Entry.paginate( // utilizo el método 'paginate()' (funciona igual que el 'find()') del módulo 'mongoose-paginate-v2' para la paginación automática
+                { $or: [ { title: search }, { extract: search }, { body: search } ] }, // si lo que busca ("search") lo encuentra en "title", "extract" o "body", lo devuelve (return)
                 { limit, page } // 'options' del método 'paginate' donde indico los valores (const limit, page) de las propiedades "limit" y "page"
             );
 
@@ -32,7 +30,7 @@ const getEntries = async (req, res) => {
 
         } else {
 
-            const entries = await Entry.paginate( {}, { limit, page } ); // utilizo el método 'paginate()' (funciona igual que el 'find()') del módulo 'mongoose-paginate-v2' para la paginación auto
+            const entries = await Entry.paginate( {}, { limit, page } ); 
 
             //console.log('ENTRIES - ELSE (BACK CONTROLLER):', entries);
 

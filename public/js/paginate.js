@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    
+
     //*** VARIABLES ***//
 
     const divPagination = document.querySelector('#paginate');
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fetchingData = async (page = 1) => {
 
-        const url = `http://localhost:3000/api/?page=${page}&limit=3`
+        const url = `http://localhost:3000/api/?page=${page}`;
 
         try {
 
@@ -38,7 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const { ok, entries } = await request.json();
 
-            const { prevPage, page, nextPage } = entries;
+            console.log(entries);
+
+            const { prevPage, nextPage } = entries;
 
             if(ok){
 
@@ -65,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(prevPage != null){
             const btnPrev = document.createElement('BUTTON');
             btnPrev.id = 'btn-prev';
+            btnPrev.dataset['page'] = page -1;
             btnPrev.textContent = '<<';
             divPagination.append(btnPrev);
         };
@@ -76,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(nextPage != null){
             const btnNext = document.createElement('BUTTON');
             btnNext.id = 'btn-next';
+            btnNext.dataset['page'] = page + 1;
             btnNext.textContent = '>>'
             divPagination.append(btnNext);
         };
