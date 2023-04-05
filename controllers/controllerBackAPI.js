@@ -3,15 +3,22 @@ const Entry = require('../models/modelEntry');
 
 const getEntries = async (req, res) => {
 
+    // variables
     const search = new RegExp(`${req.query.search}`, 'i'); // creo una expresión regular a partir de la string recibida en req.body y se la paso como valor al primer 'find()'
 
-    console.log('REQ.QUERY BACK:', req.query.search);
+    const limit = req.query.limit || 3;
+    const page = req.query.page || 1;
 
+    console.log('REQ.QUERY (BACK CONTROLLER):', req.query.search);
+
+    // try/catch mongoose
     try {
 
         if(req.query.search != undefined){ // si la propiedad "search" existe en el objeto "req.query", buscará en MongoDB según su valor (de "search"); en caso contrario, entra en el 'else'
 
-            const entries = await Entry.find( { $or: [ { title: search }, { extract: search }, { body: search } ] } ); // si lo que busca (search) lo encuentra (find()) en 'title' o en 'body', lo devuelve (return)
+            const entries = await Entry.paginate( { $or: [ { title: search }, { extract: search }, { body: search } ] } ); // si lo que busca ("search") lo encuentra en "title", "extract" o "body", lo devuelve (return)
+
+            console.log('ENTRIES - IF (BACK CONTROLLER):', entries);
 
             return res.status(200).json({
                 ok: true,
@@ -20,19 +27,13 @@ const getEntries = async (req, res) => {
 
         } else {
 
-            const { page = 1, limit = 3 } = req.query;
+            const entries = await Entry.paginate(); // utilizo el método 'paginate()' (funciona igual que el 'find()') del módulo 'mongoose-paginate-v2' para la paginación automática
 
-            const entries = await Entry.find()
-            .limit(limit * 1)
-            .skip((page - 1) * limit);
-
-            const count = await Entry.count(); // total documentos en la colección (MongoDB)
+            console.log('ENTRIES - ELSE (BACK CONTROLLER):', entries);
 
             return res.status(200).json({
                 ok: true,
-                currentPage: page,
-                totalPages: Math.ceil(count / limit),
-                entries,
+                entries
             });
 
         };

@@ -7,15 +7,13 @@ const getEntries = async (req, res) => {
 
     try {
 
-        const {ok, response} = await fetchingData(url);
+        const { response } = await fetchingData(url);
 
-        if(ok){
+        console.log('RESPONSE.ENTRIES FRONT:', response.entries);
 
-            res.render('index', {
-                entries: response.entries
-            });
-
-        };
+        res.render('index', {
+            entries: response.entries.docs
+        });
         
     } catch (error) {
 
@@ -61,8 +59,10 @@ const searchEntries = async (req, res) => {
 
             const { response } = await fetchingData(url);
 
+            console.log('SEARCH FRONT:', response.entries);
+
             res.render('result', {
-                entries: response.entries,
+                entries: response.entries.docs,
                 search: req.query.search
             });
 
