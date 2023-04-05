@@ -16,7 +16,10 @@ const getEntries = async (req, res) => {
 
         if(req.query.search != undefined){ // si la propiedad "search" existe en el objeto "req.query", buscará en MongoDB según su valor (de "search"); en caso contrario, entra en el 'else'
 
-            const entries = await Entry.paginate( { $or: [ { title: search }, { extract: search }, { body: search } ] } ); // si lo que busca ("search") lo encuentra en "title", "extract" o "body", lo devuelve (return)
+            const entries = await Entry.paginate( // si lo que busca ("search") lo encuentra en "title", "extract" o "body", lo devuelve (return)
+                { $or: [ { title: search }, { extract: search }, { body: search } ] },
+                { limit, page } 
+            );
 
             console.log('ENTRIES - IF (BACK CONTROLLER):', entries);
 
