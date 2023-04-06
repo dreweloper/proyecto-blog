@@ -6,7 +6,8 @@ const {
     getEntry,
     searchEntries,
     formLogin,
-    checkAuth
+    checkAuth,
+    logoutUser
 } = require('../controllers/controllerFront');
 
 
@@ -24,6 +25,9 @@ router.get('/login', formLogin);
 
 // AUTH 
 router.post('/auth', checkAuth); // action form value
+
+// LOG OUT
+router.get('/logout', logoutUser);
 
 
 module.exports = router;

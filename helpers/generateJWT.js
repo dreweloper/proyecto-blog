@@ -26,7 +26,7 @@ const generateJWT = (uid, name) => {
 
     });
 
-}; //!FUNC-CREATEJWT
+}; //!FUNC-GENERATEJWT
 
 
 module.exports = generateJWT;

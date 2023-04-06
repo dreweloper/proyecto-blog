@@ -112,9 +112,7 @@ const checkAuth = async (req, res) => {
 
             res.cookie('token', response.token, {
                 httpOnly: true,
-                secure: true,
-                sameSite: 'strict',
-                expires: new Date('2023-12-31')
+                maxAge: 60*5000
             });
 
             return res.redirect('/dashboard-admin');
@@ -130,10 +128,21 @@ const checkAuth = async (req, res) => {
 }; //!FUNC-VERIFYLOGIN
 
 
+const logoutUser = async (req, res) => {
+
+    console.log('ENTRO EN LOGOUTUSER')
+
+    res.clearCookie('token');
+    res.redirect('/');
+
+}; //!FUNC-LOGOUTUSER
+
+
 module.exports = {
     getEntries,
     getEntry,
     searchEntries,
     formLogin,
-    checkAuth
+    checkAuth,
+    logoutUser
 };

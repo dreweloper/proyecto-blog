@@ -39,7 +39,7 @@ const createUser = async (req, res) => {
 
     };
 
-}; //!FUNC-REGISTERUSER
+}; //!FUNC-CREATEUSER
 
 
 const loginUser = async (req, res) => {
@@ -83,14 +83,14 @@ const loginUser = async (req, res) => {
 
     };
 
-}; //!FUNC-LOGIN
+}; //!FUNC-LOGINUSER
 
 
 const renewToken = async (req, res) => {
 
     res.send('Capturando la ruta');
 
-}; //!FUNC-RENEW
+}; //!FUNC-RENEWTOKEN
 
 
 module.exports = {
