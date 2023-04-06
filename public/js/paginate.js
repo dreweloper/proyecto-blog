@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const divPagination = document.querySelector('#paginate');
     const fragment = document.createDocumentFragment();
+    let pag;
 
 
 
@@ -13,15 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', ({target}) => {
 
         if(target.matches('#btn-prev')){
-            let page = target.dataset.page;
-            fetchingData(page);
-            return location.href = `http://localhost:3000/?page=${page}`; //? return
+            pag = target.dataset.page;
+            return location.href = `http://localhost:3000/?page=${pag}`;
         };
 
         if(target.matches('#btn-next')){
-            let page = target.dataset.page;
-            fetchingData(page);
-            return location.href = `http://localhost:3000/?page=${page}`; //? return
+            pag = target.dataset.page;
+            return location.href = `http://localhost:3000/?page=${pag}`;
         };
 
     }); //!EV-CLICK
@@ -30,9 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //*** FUNCIONES ***//
 
-    const fetchingData = async (page = 1) => {
+    const fetchingData = async (pag = 1) => {
 
-        const url = `http://localhost:3000/api/?page=${page}`;
+        const url = `http://localhost:3000/api/?page=${pag}`;
 
         try {
 
@@ -40,11 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const { ok, entries } = await request.json();
 
-            const { prevPage, page, nextPage } = entries;
-
             if(ok){
 
-                return btnsPagination(prevPage, page, nextPage);
+                return entries;
 
             } else {
 
@@ -60,7 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }; //!FUNC-FETCHINGDATA
 
 
-    const btnsPagination = async (prevPage, page, nextPage) => {
+    const btnsPagination = async (pag) => {
+
+        const { prevPage, page, nextPage } = await fetchingData(pag);
+
+        console.log('BTNS:', prevPage, page, nextPage );
 
         divPagination.innerHTML = '';
 
@@ -91,16 +92,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const init = () => {
 
+        let params = new URLSearchParams(location.search);
+        console.log(params);
+
         if(location.search == ''){ // de esta forma solo entra cuando carga el index
 
-            return btnsPagination(null, 1, !null); // con el 'return' ya no entra en el 'if' al hacer click en el botón 'next'
+            fetchingData();
+            return btnsPagination();
 
         } else {
 
-            let params = new URLSearchParams(location.search);
-            let page = params.get('page');
-            
-            return fetchingData(page);
+            pag = params.get('page');
+
+            fetchingData(pag);
+            return btnsPagination(pag);
 
         };
 
