@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //*** VARIABLES ***//
 
     const divPagination = document.querySelector('#paginate');
+    const fragment = document.createDocumentFragment();
 
 
 
@@ -68,20 +69,22 @@ document.addEventListener('DOMContentLoaded', () => {
             btnPrev.id = 'btn-prev';
             btnPrev.dataset['page'] = page - 1;
             btnPrev.textContent = '<<';
-            divPagination.append(btnPrev);
+            fragment.append(btnPrev);
         };
 
         const btnPage = document.createElement('BUTTON');
         btnPage.textContent = page;
-        divPagination.append(btnPage);
+        fragment.append(btnPage);
 
         if(nextPage != null){
             const btnNext = document.createElement('BUTTON');
             btnNext.id = 'btn-next';
             btnNext.dataset['page'] = page + 1;
             btnNext.textContent = '>>'
-            divPagination.append(btnNext);
+            fragment.append(btnNext);
         };
+
+        divPagination.append(fragment);
 
     }; //!FUNC-BTNSPAGINATION
 
