@@ -1,24 +1,34 @@
-<h2>TÍTULO DEL DASHBOARD-ADMIN</h2>
+<%- include('./templates/header-admin.ejs') %>
 
-<a href="/dashboard-admin/form-new">Crear entrada</a>
+<%- include('./templates/nav-admin.ejs') %>
 
-<% if (entries.length > 0) { %>
+<h2 class="uppercase text-center">Dashboard admin</h2>
 
-    <% entries.forEach(item => { %>
+<section class="grid-container">
 
-        <article>
-            <h3> <%= item.title %> </h3>
-            <img src="<%= item.photo %>" alt="">
-            <p> <%= item.extract %> </p>
-            <p> <%= item.date %> </p>
-            <a href="/dashboard-admin/form-edit/<%= item._id %>">Editar entrada</a>
-            <a href="/dashboard-admin/delete/<%= item._id %>">Eliminar entrada</a>
-        </article>
-     
-    <% }) %>
+    <a class="boton" href="/dashboard-admin/form-new">Crear entrada</a>
 
-<% } else { %>
- 
-    <p>No hay entradas…</p>
- 
-<% } %>
+    <% if (entries.length > 0) { %>
+
+        <% entries.forEach(item => { %>
+
+            <article class="grid-item">
+                <h3> <%= item.title %> </h3>
+                <img src="<%= item.photo %>" alt="<%= item.title %>" title="<%= item.title %>">
+                <p> <%= item.extract %> </p>
+                <p> <%= item.date %> </p>
+                <a class="boton" href="/dashboard-admin/form-edit/<%= item._id %>">Editar entrada</a>
+                <a class="boton" href="/dashboard-admin/delete/<%= item._id %>">Eliminar entrada</a>
+            </article>
+        
+        <% }) %>
+
+    <% } else { %>
+    
+        <p>No hay entradas…</p>
+    
+    <% } %>
+
+</section>
+
+<%- include('./templates/footer-admin.ejs') %>

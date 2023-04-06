@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const divPagination = document.querySelector('#paginate');
     const fragment = document.createDocumentFragment();
     let params = new URLSearchParams(location.search);
-    let pag;
+    let pag, search;
 
 
 
@@ -24,17 +24,43 @@ document.addEventListener('DOMContentLoaded', () => {
             return location.href = `http://localhost:3000/?page=${pag}`;
         };
 
+        if(target.matches('#btn-search')){
+            pag = 1;
+            search = params.get('search');
+            return location.href = `http://localhost:3000/api/?search=${search}&page=${pag}`;
+        };
+
     }); //!EV-CLICK
 
 
 
     //*** FUNCIONES ***//
 
-    const fetchingData = async (pag = 1) => {
+    const fetchingData = async (pag = 1, search) => {
 
-        const url = `http://localhost:3000/api/?page=${pag}`;
+        let url;
+
+        if(!params.has('search')){
+
+            console.log('ENTRO EN EL PRIMER IF DEL FETCH')
+
+            url = `http://localhost:3000/api/?page=${pag}`;
+
+        } else {
+
+            console.log('ENTRO EN EL SEGUNDO IF DEL FETCH')
+
+            search = params.get('search');
+            pag = params.get('page');
+            console.log('PAG FETCH', pag)
+
+            url = `http://localhost:3000/api/?search=${search}&page=${pag}`;
+
+        };
 
         try {
+
+            console.log('URL:', url);
 
             const request = await fetch(url);
 
@@ -62,12 +88,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const { prevPage, page, nextPage } = await fetchingData(pag);
 
+        console.log('BTNS:', prevPage, page, nextPage );
+
         divPagination.innerHTML = '';
 
         if(prevPage != null){
             const btnPrev = document.createElement('BUTTON');
-            btnPrev.id = 'btn-prev'; // para capturarlo en el evento
-            btnPrev.dataset['page'] = page - 1; // para pasárselo a la url en el evento
+            btnPrev.id = 'btn-prev';
+            btnPrev.dataset['page'] = page - 1;
             btnPrev.textContent = '<<';
             fragment.append(btnPrev);
         };
@@ -93,14 +121,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const init = () => {
 
-        pag = params.get('page');
+        if(params.has('search') && params.has('page')){
 
-        if(location.search == ''){ // de esta forma solo entra cuando carga el index
+            console.log('ENTRO EN EL PRIMER IF DEL INIT');
+
+            pag = params.get('page');
+
+            fetchingData(pag);
+            return btnsPagination(pag);
+
+        };
+
+        if(location.search == '' || params.has('search')){ // de esta forma solo entra cuando carga el index
+
+            console.log('ENTRO EN EL SEGUNDO IF DEL INIT');
 
             fetchingData();
             return btnsPagination();
 
         } else {
+
+            console.log('ENTRO EN EL ELSE DEL INIT');
+
+            pag = params.get('page');
 
             fetchingData(pag);
             return btnsPagination(pag);
