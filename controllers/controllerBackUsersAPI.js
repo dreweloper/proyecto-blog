@@ -1,11 +1,18 @@
-const loginUser = (req, res) => {
+const createUser = async (req, res) => {
+
+
+
+}; //!FUNC-REGISTERUSER
+
+
+const loginUser = async (req, res) => {
 
 
 
 }; //!FUNC-LOGIN
 
 
-const renewToken = (req, res) => {
+const renewToken = async (req, res) => {
 
 
 
@@ -13,6 +20,7 @@ const renewToken = (req, res) => {
 
 
 module.exports = {
+    createUser,
     loginUser,
     renewToken
 };

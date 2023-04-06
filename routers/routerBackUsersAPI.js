@@ -1,11 +1,14 @@
 const { Router } = require('express');
 const router = Router();
 
-const { loginUser, renewToken } = require('../controllers/controllerBackUsersAPI');
+const { createUser, loginUser, renewToken } = require('../controllers/controllerBackUsersAPI');
 
+
+// REGISTER
+router.post('/register', createUser);
 
 // LOGIN
-router.post('/', loginUser);
+router.post('/login', loginUser);
 
 // RENEW JWT
 router.get('/renew', renewToken);
