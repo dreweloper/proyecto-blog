@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 const verifyJWT = async (req, res, next) => {
 
     const token = req.cookies.token;
-    console.log('TOKEN:', token);
 
     try {
         

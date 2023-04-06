@@ -81,6 +81,12 @@ const searchEntries = async (req, res) => {
 
 const formLogin = async (req, res) => {
 
+    if(req.cookies.token != undefined){
+
+        return res.redirect('/dashboard-admin');
+
+    };
+
     res.render('login');
 
 }; //!FUNC-FORMLOGIN

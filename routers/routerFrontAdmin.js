@@ -19,7 +19,9 @@ const upload = require('../middlewares/uploadImage');
 
 
 // INDEX-ADMIN
-router.get('/', getEntries);
+router.get('/', [
+    verifyJWT,
+], getEntries);
 
 // FORM NEW ENTRY
 router.get('/form-new', [
