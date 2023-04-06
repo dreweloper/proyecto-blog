@@ -4,15 +4,15 @@ const generateJWT = require('../helpers/jwt')
 
 
 const createUser = async (req, res) => {
-
-    // encriptar password
-    let salt = bcrypt.genSaltSync(10);
-    req.body.password = bcrypt.hashSync(req.body.password, salt);
-
+    
     const newUser = new User(req.body);
 
     try {
-        
+
+        // encriptar password
+        let salt = bcrypt.genSaltSync(10);
+        newUser.password = bcrypt.hashSync(req.body.password, salt);
+
         const user = await newUser.save();
 
         // generar token
@@ -44,7 +44,47 @@ const createUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
 
-    res.send('Capturando la ruta');
+    const { email, password } = req.body;
+
+    try {
+
+        const user = await User.findOne( { email } ); // find() devuelve array de obj y findOne() el obj directamente
+        
+        const pass = bcrypt.compareSync(password, user.password);
+
+        if(user == null || !pass){
+
+            return res.status(401).json({
+                ok: false,
+                msg: 'ERROR: e-maill o password incorrecto.'
+            });
+
+        } else {
+
+            const token = await generateJWT(user._id, user.name);
+
+            return res.status(200).json({
+                ok: true,
+                msg: `Credenciales correctas. ¡Bienvenido/a, ${user.name}`,
+                uid: user._id,
+                name: user.name,
+                email,
+                token
+            });
+
+        };
+
+    } catch (error) {
+        
+        console.log(`createUser controller error: ${error}`);
+        
+        return res.status(500).json({
+            ok: false,
+            msg: 'ERROR: contacte con el administrador.',
+            error
+        });
+
+    };
 
 }; //!FUNC-LOGIN
 
