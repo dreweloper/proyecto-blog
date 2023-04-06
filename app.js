@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
+const cookieParser = require('cookie-parser');
 
 // port config
 const app = express();
@@ -13,6 +14,9 @@ connection();
 
 // cors middleware
 app.use(cors());
+
+// cookie-parser middleware
+app.use(cookieParser());
 
 // template engine
 app.set('view engine', 'ejs');

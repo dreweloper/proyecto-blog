@@ -48,7 +48,7 @@ const loginUser = async (req, res) => {
 
     try {
 
-        const user = await User.findOne( { email } ); // find() devuelve array de obj y findOne() el obj directamente
+        const user = await User.findOne( { email } ); // utilizo findOne() porque devuelve el objeto directamente (find() devuelve array de obj.)
         
         const pass = bcrypt.compareSync(password, user.password);
 
@@ -66,9 +66,6 @@ const loginUser = async (req, res) => {
             return res.status(200).json({
                 ok: true,
                 msg: `Credenciales correctas. ¡Bienvenido/a, ${user.name}`,
-                uid: user._id,
-                name: user.name,
-                email,
                 token
             });
 

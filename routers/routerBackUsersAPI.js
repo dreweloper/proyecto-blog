@@ -11,7 +11,7 @@ router.post('/register', createUser);
 router.post('/auth', loginUser);
 
 // RENEW JWT
-router.get('/renew', renewToken);
+// router.get('/renew', renewToken);
 
 
 module.exports = router;

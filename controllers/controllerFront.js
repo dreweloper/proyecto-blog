@@ -81,7 +81,7 @@ const searchEntries = async (req, res) => {
 
 const formLogin = async (req, res) => {
 
-res.render('login');
+    res.render('login');
 
 }; //!FUNC-FORMLOGIN
 
