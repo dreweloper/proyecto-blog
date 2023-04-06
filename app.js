@@ -32,7 +32,8 @@ app.use(express.json());
 // routes
 app.use('/', require('./routers/routerFront')); // front
 app.use('/dashboard-admin', require('./routers/routerFrontAdmin')); // front - admin
-app.use('/api/entries', require('./routers/routerBackAPI')); // back - entries
+app.use('/api/entries', require('./routers/routerBackEntriesAPI')); // back - entries
+app.use('/api/users', require('./routers/routerBackUsersAPI')); // back - users
 
 // route: 404
 app.use((req, res, next) => {
