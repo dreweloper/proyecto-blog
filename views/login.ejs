@@ -1,0 +1,30 @@
+<%- include('./templates/header.ejs') %>
+
+<%- include('./templates/nav.ejs') %>
+
+<section class="search-bar">
+
+    <form action="/search" method="GET">
+        <input id="search" name="search" type="text" placeholder="Buscador de entradas">
+        <input type="submit" value="Buscar">
+    </form>
+
+</section>
+
+<section class="grid-container">
+
+    <form class="grid-item" action="/auth" method="POST">
+
+        <label for="email">E-mail:</label>
+        <input id="email" name="email" type="text">
+        
+        <label for="password">Password:</label>
+        <input id="password" name="password" type="password">
+
+        <input type="submit" value="Iniciar sesión">
+
+    </form>
+
+</section>
+
+<%- include('./templates/footer.ejs') %>

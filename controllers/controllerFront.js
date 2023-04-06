@@ -79,8 +79,16 @@ const searchEntries = async (req, res) => {
 }; //!FUNC-SEARCHENTRIES
 
 
+const formLogin = async (req, res) => {
+
+res.render('login');
+
+}; //!FUNC-FORMLOGIN
+
+
 module.exports = {
     getEntries,
     getEntry,
     searchEntries,
+    formLogin
 };

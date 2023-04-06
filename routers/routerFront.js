@@ -5,6 +5,7 @@ const {
     getEntries,
     getEntry,
     searchEntries,
+    formLogin
 } = require('../controllers/controllerFront');
 
 
@@ -16,6 +17,12 @@ router.get('/entry/:id', getEntry);
 
 // SEARCH - SHOW RESULT
 router.get('/search', searchEntries); // action form value
+
+// FORM LOGIN
+router.get('/login', formLogin);
+
+// AUTH 
+router.post('/auth'); // action form value
 
 
 module.exports = router;

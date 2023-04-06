@@ -8,7 +8,7 @@ const { createUser, loginUser, renewToken } = require('../controllers/controller
 router.post('/register', createUser);
 
 // LOGIN
-router.post('/login', loginUser);
+router.post('/auth', loginUser);
 
 // RENEW JWT
 router.get('/renew', renewToken);
