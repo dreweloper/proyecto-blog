@@ -5,7 +5,8 @@ const {
     getEntries,
     getEntry,
     searchEntries,
-    formLogin
+    formLogin,
+    checkAuth
 } = require('../controllers/controllerFront');
 
 
@@ -22,7 +23,7 @@ router.get('/search', searchEntries); // action form value
 router.get('/login', formLogin);
 
 // AUTH 
-router.post('/auth'); // action form value
+router.post('/auth', checkAuth); // action form value
 
 
 module.exports = router;

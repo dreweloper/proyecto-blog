@@ -11,6 +11,9 @@ const {
     deleteEntry
 } = require('../controllers/controllerFrontAdmin');
 
+// JWT middleware
+const verifyJWT = require('../middlewares/verifyJWT');
+
 // multer middleware
 const upload = require('../middlewares/uploadImage');
 

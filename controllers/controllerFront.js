@@ -86,9 +86,48 @@ const formLogin = async (req, res) => {
 }; //!FUNC-FORMLOGIN
 
 
+const checkAuth = async (req, res) => {
+
+    let url = `${process.env.URL_BASE_API_USERS}/auth`;
+    let method = 'POST';
+    let body = req.body;
+
+    try {
+
+        const auth = await fetchingData(url, method, body);
+
+        if(!auth){
+            
+            res.redirect('/login');
+
+        } else {
+
+            const { response } = auth;
+
+            res.cookie('token', response.token, {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'strict',
+                expires: new Date('2023-12-31')
+            });
+
+            return res.redirect('/dashboard-admin');
+
+        };
+        
+    } catch (error) {
+        
+        console.log(error);
+
+    };
+
+}; //!FUNC-VERIFYLOGIN
+
+
 module.exports = {
     getEntries,
     getEntry,
     searchEntries,
-    formLogin
+    formLogin,
+    checkAuth
 };

@@ -1,6 +1,6 @@
 const User = require('../models/modelUser');
 const bcrypt = require('bcryptjs');
-const generateJWT = require('../helpers/jwt')
+const generateJWT = require('../helpers/generateJWT')
 
 
 const createUser = async (req, res) => {
@@ -65,7 +65,7 @@ const loginUser = async (req, res) => {
 
             return res.status(200).json({
                 ok: true,
-                msg: `Credenciales correctas. ¡Bienvenido/a, ${user.name}`,
+                msg: 'Credenciales correctas.',
                 token
             });
 
