@@ -7,7 +7,7 @@ const {
     addEntry,
     updateEntry,
     deleteEntry,
-} = require('../controllers/controllerBackAPI');
+} = require('../controllers/controllerBackEntriesAPI');
 
 
 // GET ALL ENTRIES

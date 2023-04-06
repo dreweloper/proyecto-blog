@@ -11,31 +11,44 @@ const {
     deleteEntry
 } = require('../controllers/controllerFrontAdmin');
 
+// JWT middleware
+const verifyJWT = require('../middlewares/verifyJWT');
+
 // multer middleware
 const upload = require('../middlewares/uploadImage');
 
 
 // INDEX-ADMIN
-router.get('/', getEntries);
+router.get('/', [
+    verifyJWT,
+], getEntries);
 
 // FORM NEW ENTRY
-router.get('/form-new', formAddEntry);
+router.get('/form-new', [
+    verifyJWT,
+], formAddEntry);
 
 // ADD NEW ENTRY
 router.post('/add', [
+    verifyJWT,
     upload
 ], addEntry);
 
 // FORM UPDATE ENTRY
-router.get('/form-edit/:id', formUpdateEntry);
+router.get('/form-edit/:id', [
+    verifyJWT,
+], formUpdateEntry);
 
 // UPDATE ENTRY
 router.post('/update/:id', [
+    verifyJWT,
     upload
 ], updateEntry);
 
 // DELETE ENTRY
-router.get('/delete/:id', deleteEntry);
+router.get('/delete/:id', [
+    verifyJWT,
+], deleteEntry);
 
 
 module.exports = router;

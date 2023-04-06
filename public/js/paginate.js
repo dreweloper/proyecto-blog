@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fetchingData = async (pag = 1) => {
 
-        const url = `http://localhost:3000/api/?page=${pag}`;
+        const url = `http://localhost:3000/api/entries/?page=${pag}`;
 
         try {
 
