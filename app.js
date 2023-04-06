@@ -30,9 +30,9 @@ app.use(express.json());
 
 
 // routes
-app.use('/', require('./routers/routerFront'));
+app.use('/', require('./routers/routerFront')); // front
 app.use('/dashboard-admin', require('./routers/routerFrontAdmin')); // front - admin
-app.use('/api', require('./routers/routerBackAPI')); // back
+app.use('/api/entries', require('./routers/routerBackAPI')); // back - entries
 
 // route: 404
 app.use((req, res, next) => {

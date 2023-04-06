@@ -3,7 +3,7 @@ const fetchingData = require('../helpers/fetch');
 
 const getEntries = async (req, res) => {
     
-    const url = `${process.env.URL_BASE_API}/?page=${req.query.page}`; // pasándole el valor de 'req.query.page' avanza o retrocede, según lo que reciba, en la paginación de MongoDB
+    const url = `${process.env.URL_BASE_API_ENTRIES}/?page=${req.query.page}`; // pasándole el valor de 'req.query.page' avanza o retrocede, según lo que reciba, en la paginación de MongoDB
 
     try {
 
@@ -24,7 +24,7 @@ const getEntries = async (req, res) => {
 
 const getEntry = async (req, res) => {
 
-    const url = `${process.env.URL_BASE_API}/${req.params.id}`;
+    const url = `${process.env.URL_BASE_API_ENTRIES}/${req.params.id}`;
 
     try {
         
@@ -49,7 +49,7 @@ const getEntry = async (req, res) => {
 
 const searchEntries = async (req, res) => {
 
-    const url = `${process.env.URL_BASE_API}/?search=${req.query.search}`; // "obligo" al fetch a que entre por el 'if' del controller getEntries del back (Object.keys(req.query).length != 0)
+    const url = `${process.env.URL_BASE_API_ENTRIES}/?search=${req.query.search}`; // "obligo" al fetch a que entre por el 'if' del controller getEntries del back (Object.keys(req.query).length != 0)
     
     try {
 

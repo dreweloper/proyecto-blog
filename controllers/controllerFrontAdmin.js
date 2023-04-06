@@ -4,7 +4,7 @@ const fs = require('fs').promises;
 
 const getEntries = async (req, res) => {
 
-    const url = `${process.env.URL_BASE_API}/?limit=20`;
+    const url = `${process.env.URL_BASE_API_ENTRIES}/?limit=20`;
 
     try {
 
@@ -38,7 +38,7 @@ const addEntry = async (req, res) => {
 
     req.body.photo = `${process.env.URL_BASE_MULTER}/${req.file.filename}`; // url del input file (image)
 
-    const url = `${process.env.URL_BASE_API}/`;
+    const url = `${process.env.URL_BASE_API_ENTRIES}/`;
     const method = 'POST';
     const body = req.body;
 
@@ -59,7 +59,7 @@ const addEntry = async (req, res) => {
 
 const formUpdateEntry = async (req, res) => {
 
-    const url = `${process.env.URL_BASE_API}/${req.params.id}`; // solo necesito el id para completar la url
+    const url = `${process.env.URL_BASE_API_ENTRIES}/${req.params.id}`; // solo necesito el id para completar la url
 
     try {
 
@@ -81,7 +81,7 @@ const formUpdateEntry = async (req, res) => {
 const updateEntry = async (req, res) => {
 
     // variables
-    const url = `${process.env.URL_BASE_API}/${req.params.id}`; // solo necesito el id para completar la url
+    const url = `${process.env.URL_BASE_API_ENTRIES}/${req.params.id}`; // solo necesito el id para completar la url
     const method = 'PUT';
     const body = req.body;
 
@@ -112,7 +112,7 @@ const updateEntry = async (req, res) => {
 
 const deleteEntry = async (req, res) => {
 
-    const url = `${process.env.URL_BASE_API}/${req.params.id}`;
+    const url = `${process.env.URL_BASE_API_ENTRIES}/${req.params.id}`;
     const method = 'DELETE';
 
     try {
