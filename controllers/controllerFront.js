@@ -57,8 +57,6 @@ const searchEntries = async (req, res) => {
 
             const { response } = await fetchingData(url);
 
-            console.log('SEARCH FRONT:', response.entries);
-
             res.render('result', {
                 entries: response.entries.docs,
                 search: req.query.search
@@ -79,70 +77,8 @@ const searchEntries = async (req, res) => {
 }; //!FUNC-SEARCHENTRIES
 
 
-const formLogin = async (req, res) => {
-
-    if(req.cookies.token != undefined){
-
-        return res.redirect('/dashboard-admin');
-
-    };
-
-    res.render('login');
-
-}; //!FUNC-FORMLOGIN
-
-
-const checkAuth = async (req, res) => {
-
-    let url = `${process.env.URL_BASE_API_USERS}/auth`;
-    let method = 'POST';
-    let body = req.body;
-
-    try {
-
-        const auth = await fetchingData(url, method, body);
-
-        if(!auth){
-            
-            res.redirect('/login');
-
-        } else {
-
-            const { response } = auth;
-
-            res.cookie('token', response.token, {
-                httpOnly: true,
-                maxAge: 60*5000
-            });
-
-            return res.redirect('/dashboard-admin');
-
-        };
-        
-    } catch (error) {
-        
-        console.log(error);
-
-    };
-
-}; //!FUNC-VERIFYLOGIN
-
-
-const logoutUser = async (req, res) => {
-
-    console.log('ENTRO EN LOGOUTUSER')
-
-    res.clearCookie('token');
-    res.redirect('/');
-
-}; //!FUNC-LOGOUTUSER
-
-
 module.exports = {
     getEntries,
     getEntry,
-    searchEntries,
-    formLogin,
-    checkAuth,
-    logoutUser
+    searchEntries
 };
