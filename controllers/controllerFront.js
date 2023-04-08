@@ -10,7 +10,8 @@ const getEntries = async (req, res) => {
         const { response } = await fetchingData(url);
 
         res.render('index', {
-            entries: response.entries.docs
+            entries: response.entries.docs,
+            token: req.cookies.token || ''
         });
         
     } catch (error) {
@@ -33,7 +34,8 @@ const getEntry = async (req, res) => {
         if(ok){
 
             res.render('entry.ejs', {
-                entry: response.entry
+                entry: response.entry,
+                token: req.cookies.token || ''
             });
 
         };
@@ -59,7 +61,8 @@ const searchEntries = async (req, res) => {
 
             res.render('result', {
                 entries: response.entries.docs,
-                search: req.query.search
+                search: req.query.search,
+                token: req.cookies.token || ''
             });
 
         } else {

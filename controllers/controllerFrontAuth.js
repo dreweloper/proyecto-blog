@@ -9,7 +9,9 @@ const formLogin = async (req, res) => {
 
     };
 
-    res.render('login');
+    res.render('login', {
+        token: req.cookies.token || ''
+    });
 
 }; //!FUNC-FORMLOGIN
 
