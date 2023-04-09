@@ -10,7 +10,8 @@ const formLogin = async (req, res) => {
     };
 
     res.render('login', {
-        token: req.cookies.token || ''
+        token: req.cookies.token || '',
+        error: [] // si no, da error porque el middleware 'validateInputs' no le ha enviado nada al renderizar el ejs
     });
 
 }; //!FUNC-FORMLOGIN

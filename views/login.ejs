@@ -25,6 +25,16 @@
 
     </form>
 
+    <% if (error.length > 0) { %>
+
+        <% error.forEach(item => { %>
+
+            <p> <%= item.msg %> </p>
+         
+        <% }) %>
+     
+    <% } %>
+
 </section>
 
 <%- include('./templates/footer.ejs') %>
