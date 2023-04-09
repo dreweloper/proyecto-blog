@@ -97,12 +97,29 @@ body{
 
 .search-bar{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    max-width: 100%;
+    margin: 0 auto;
 }
 
-#text-search-bar, #submit-search-bar{
-    padding: 3px;
+.search-bar-text{
+    min-width: 200px;
+    max-width: 400px;
+    padding: 4px 10px;
+    background: var(--light);
+    border-radius: 4px;
+    border: none;
+    margin: 0 2px;
+}
+
+.search-bar-submit{
+    padding: 4px 10px;
+    background: var(--opposite);
+    color: var(--light);
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+    margin: 0 2px;
 }
 
 
@@ -156,7 +173,7 @@ img{
 }
 
 .boton{
-    padding: 4px 25px;
+    padding: 4px 10px;
     background: var(--opposite);
     color: var(--light);
     border-radius: 4px;
@@ -175,6 +192,65 @@ img{
 
 
 /***** FORM END *****/
+
+/***** FORM LOGIN START *****/
+
+
+.login-form {
+    width: max-content;
+    margin: 40px auto;
+    padding: 25px 28px;
+    background: var(--dark);
+    border-radius: 4px;
+}
+
+.login-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: 400;
+    color: var(--light);
+}
+
+.input-parent {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.front-label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--light);
+}
+
+.input-parent input {
+    padding: 10px 8px;
+    width: 100%;
+    font-size: 1rem;
+    background: var(--light);
+    border: none;
+    color: var(--dark);
+    border-radius: 4px;
+    outline: none;
+}
+
+.login-submit {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    background: var(--opposite);
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    color: var(--light);
+}
+
+.login-submit:hover {
+    opacity: 0.9;
+}
+
+
+/***** FORM LOGIN END *****/
 
 /***** BOTONES PAGINACIÓN START *****/
 
@@ -198,12 +274,7 @@ img{
 /***** FOOTER START *****/
 
 
-.footer{
-    display: flex;
-    width: 100%;
-    height: 100px;
-    background-color: var(--dark);
-}
+
 
 
 /***** FOOTER END *****/
