@@ -36,7 +36,9 @@ const checkAuth = async (req, res) => {
 
             res.cookie('token', response.token, {
                 httpOnly: true,
-                maxAge: 60*5000
+                secure: true,
+                sameSite: 'strict',
+                maxAge: 60 * 5000
             });
 
             return res.redirect('/dashboard-admin');
