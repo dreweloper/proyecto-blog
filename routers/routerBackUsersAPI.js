@@ -4,13 +4,12 @@ const router = Router();
 const {
     createUser,
     loginUser,
-    logoutUser,
     renewToken
 } = require('../controllers/controllerBackUsersAPI');
 
 
 // REGISTER
-router.post('/register', createUser);
+router.post('/register', createUser); // action form value
 
 // LOG IN
 router.post('/auth', loginUser);

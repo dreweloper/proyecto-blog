@@ -1,9 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 
-const { check } = require('express-validator');
-
-const validateInputs = require('../middlewares/validateInputs');
+const validateAuth = require('../validators/auth');
 
 const {
     formLogin,
@@ -17,13 +15,7 @@ router.get('/login', formLogin);
 
 // AUTH 
 router.post('/auth', [ // action form value
-    check('email')
-    .isEmail()
-    .withMessage('Debe introducir un e-mail válido.'),
-    check('password')
-    .isLength( { min:6, max:10 } )
-    .withMessage('La contraseña debe tener entre 4 y 10 caracteres.'),
-    validateInputs
+    validateAuth
 ], checkAuth);
 
 // LOG OUT
