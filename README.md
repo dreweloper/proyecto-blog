@@ -28,9 +28,9 @@ Credenciales para acceder al dashboard admin:
 
 ## .env
 
-- PORT = **3000**
-- URI_CONNECT = **mongodb+srv://admin:admin@drewiex.gaskjhw.mongodb.net/proyecto-blog?retryWrites=true&w=majority**
-- URL_BASE_API_ENTRIES = **'http://localhost:3000/api/entries'**
-- URL_BASE_API_USERS = **'http://localhost:3000/api/users'**
-- URL_BASE_MULTER = **'http://localhost:3000/images'**
-- JWT_SECRET_KEY = **ZWxjYWJhbGxvYmxhbmNvZGVzaW1vbmJvbGl2YXI**
+- PORT
+- URI_CONNECT
+- URL_BASE_API_ENTRIES
+- URL_BASE_API_USERS
+- URL_BASE_MULTER
+- JWT_SECRET_KEY
