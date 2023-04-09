@@ -1,6 +1,6 @@
 const User = require('../models/modelUser');
 const bcrypt = require('bcryptjs');
-const generateJWT = require('../helpers/generateJWT')
+const generateJWT = require('../helpers/generateJWT');
 
 
 const createUser = async (req, res) => {
@@ -16,7 +16,7 @@ const createUser = async (req, res) => {
         const user = await newUser.save();
 
         // generar token
-        const token = await generateJWT(user._id, user.name);
+        const token = generateJWT(user._id, user.name);
 
         return res.status(201).json({
             ok: true,
@@ -61,7 +61,7 @@ const loginUser = async (req, res) => {
 
         } else {
 
-            const token = await generateJWT(user._id, user.name);
+            const token = generateJWT(user._id, user.name);
 
             return res.status(200).json({
                 ok: true,

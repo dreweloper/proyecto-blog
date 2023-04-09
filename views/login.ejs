@@ -2,15 +2,6 @@
 
 <%- include('./templates/nav.ejs') %>
 
-<section class="search-bar">
-
-    <form action="/search" method="GET">
-        <input id="search" name="search" type="text" placeholder="Buscador de entradas">
-        <input type="submit" value="Buscar">
-    </form>
-
-</section>
-
 <section class="grid-container">
 
     <form class="grid-item" action="/auth" method="POST">
@@ -24,6 +15,16 @@
         <input type="submit" value="Iniciar sesión">
 
     </form>
+
+    <% if (error.length > 0) { %>
+
+        <% error.forEach(item => { %>
+
+            <p> <%= item.msg %> </p>
+         
+        <% }) %>
+     
+    <% } %>
 
 </section>
 

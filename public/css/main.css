@@ -161,6 +161,16 @@ img{
     color: var(--light);
     border-radius: 4px;
     text-decoration: none;
+    border: none;
+}
+
+.flex-start{
+    display: flex;
+    justify-self: flex-start;
+}
+
+.pointer{
+    cursor: pointer;
 }
 
 

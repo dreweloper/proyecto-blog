@@ -3,28 +3,25 @@ const jwt = require('jsonwebtoken');
 
 const generateJWT = (uid, name) => {
 
-    return new Promise((resolve, reject) => {
+    let payload = { uid, name };
 
-        let payload = { uid, name };
-
-        jwt.sign(
+    try {
+        
+        const token = jwt.sign(
             payload,
             process.env.JWT_SECRET_KEY,
-            { expiresIn: '7d' },
-            (error, token) => {
-                if(error){
+            { expiresIn: '1d' }
+        );
 
-                    console.log(error);
-                    reject('ERROR: no se ha generado el token.');
+        if(token) return token;
 
-                } else {
+        else throw('ERROR: no se ha generado el token.')
 
-                    resolve(token);
+    } catch (error) {
+        
+        console.log(error);
 
-                };
-        });
-
-    });
+    };
 
 }; //!FUNC-GENERATEJWT
 
