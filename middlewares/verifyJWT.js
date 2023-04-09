@@ -14,10 +14,8 @@ const verifyJWT = async (req, res, next) => {
         next();
 
     } catch (error) {
-        
-        res.clearCookie('token');
-        
-        return res.redirect('/');
+                
+        return res.clearCookie('token').redirect('/');
 
     };
 

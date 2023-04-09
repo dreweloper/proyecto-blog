@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const router = Router();
 
-// admin controllers
 const {
     getEntries,
     formAddEntry,

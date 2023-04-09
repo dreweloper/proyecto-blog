@@ -52,7 +52,7 @@ const loginUser = async (req, res) => {
         
         const pass = bcrypt.compareSync(password, user.password);
 
-        if(user == null || !pass){
+        if(!user || !pass){
 
             return res.status(401).json({
                 ok: false,

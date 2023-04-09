@@ -57,8 +57,7 @@ const checkAuth = async (req, res) => {
 
 const logoutUser = async (req, res) => {
 
-    res.clearCookie('token');
-    res.redirect('/');
+    res.clearCookie('token').redirect('/');
 
 }; //!FUNC-LOGOUTUSER
 

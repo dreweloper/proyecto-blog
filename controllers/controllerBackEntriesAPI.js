@@ -15,8 +15,8 @@ const getEntries = async (req, res) => {
         if(req.query.search != undefined){ // si la propiedad "search" existe en el objeto "req.query", buscará en MongoDB según su valor (de "search"); en caso contrario, entra en el 'else'
 
             const entries = await Entry.paginate( // utilizo el método 'paginate()' (funciona igual que el 'find()') del módulo 'mongoose-paginate-v2' para la paginación automática
-                { $or: [ { title: search }, { extract: search }, { body: search } ] }, // si lo que busca ("search") lo encuentra en "title", "extract" o "body", lo devuelve (return)
-                { page, limit } // 'options' del método 'paginate' donde indico los valores (const limit, page) de las propiedades "limit" y "page"
+                { $or: [ { title: search }, { extract: search }, { body: search } ] }, // si lo que busca ("search") lo encuentra en "title", "extract" o "body", lo devuelve
+                { page, limit } // 'options' del método 'paginate' donde indico los valores (const page, limit) de las propiedades "limit" y "page"
             );
 
             return res.status(200).json({
@@ -77,7 +77,7 @@ const getEntry = async (req, res) => {
 }; //!FUNC-GETENTRY
 
 
-const addEntry = async (req, res) => { // pendiente: manejo de errores
+const addEntry = async (req, res) => {
 
     const newEntry = new Entry(req.body);
 
@@ -105,7 +105,7 @@ const addEntry = async (req, res) => { // pendiente: manejo de errores
 }; //!FUNC-ADDENTRY
 
 
-const updateEntry = async (req, res) => { // pendiente: manejo de errores
+const updateEntry = async (req, res) => {
 
     const id = req.params.id;
     const body = req.body;
@@ -134,7 +134,7 @@ const updateEntry = async (req, res) => { // pendiente: manejo de errores
 }; //!FUNC-UPDATEENTRY
 
 
-const deleteEntry = async (req, res) => { // pendiente: manejo de errores
+const deleteEntry = async (req, res) => {
 
     const id = req.params.id;
 

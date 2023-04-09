@@ -15,7 +15,7 @@ const generateJWT = (uid, name) => {
 
         if(token) return token;
 
-        else throw('ERROR: no se ha generado el token.')
+        else throw('ERROR: no se ha generado el token.');
 
     } catch (error) {
         

@@ -8,7 +8,7 @@ const getEntries = async (req, res) => {
 
     try {
 
-        const {ok, response} = await fetchingData(url);
+        const { ok, response } = await fetchingData(url);
 
         if(ok){
 
@@ -81,20 +81,26 @@ const formUpdateEntry = async (req, res) => {
 const updateEntry = async (req, res) => {
 
     // variables
-    const url = `${process.env.URL_BASE_API_ENTRIES}/${req.params.id}`; // solo necesito el id para completar la url
+    const url = `${process.env.URL_BASE_API_ENTRIES}/${req.params.id}`;
     const method = 'PUT';
     const body = req.body;
 
-    let image = req.body.photo.split('/'); // separo la url de la propiedad 'photo'
+    let image = req.body.photo.split('/'); // separo la url de la propiedad "photo"
+
     image = image[image.length-1]; // guardo en la variable solo el nombre de la imagen
 
     try {
 
         if(req.file != undefined){
-            await fs.unlink(`./public/images/${image}`); // elimina la imagen anterior
+
+            await fs.unlink(`./public/images/${image}`); // elimina la imagen anterior de la carpeta images
+
             req.body.photo = `${process.env.URL_BASE_MULTER}/${req.file.filename}`; // guarda la imagen nueva
+
         } else {
-            req.body.photo; // si no hay cambios, se mantiene la url de la imagen que ya está guardada en MongoDB (propiedad 'photo')
+
+            req.body.photo; // si no hay cambios, se mantiene la url de la imagen que ya está guardada en MongoDB (propiedad "photo")
+
         };
 
         await fetchingData(url, method, body);
@@ -119,9 +125,11 @@ const deleteEntry = async (req, res) => {
         
         const { response } = await fetchingData(url, method);
 
-        let image = response.entry.photo.split('/'); // separo la url de la propiedad 'photo'
-        image = image[image.length-1]; // guardo en la variable solo el nombre de la imagen
-        await fs.unlink(`./public/images/${image}`); // eliminar imagen de la carpeta
+        let image = response.entry.photo.split('/');
+
+        image = image[image.length-1];
+
+        await fs.unlink(`./public/images/${image}`); // elimina la imagen de la carpeta images
 
     } catch (error) {
         
