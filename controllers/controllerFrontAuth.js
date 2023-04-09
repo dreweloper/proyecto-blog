@@ -51,12 +51,10 @@ const checkAuth = async (req, res) => {
 
     };
 
-}; //!FUNC-VERIFYLOGIN
+}; //!FUNC-CHECKAUTH
 
 
 const logoutUser = async (req, res) => {
-
-    console.log('ENTRO EN LOGOUTUSER')
 
     res.clearCookie('token');
     res.redirect('/');
