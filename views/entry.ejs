@@ -1,0 +1,25 @@
+<%- include('./templates/header.ejs') %>
+
+<%- include('./templates/nav.ejs') %>
+
+<section class="search-bar">
+
+    <form action="/search" method="GET">
+        <input id="search" name="search" class="search-bar-text" type="text" placeholder="Buscador de entradas">
+        <input type="submit" class="search-bar-submit" value="Buscar">
+    </form>
+
+</section>
+
+<section class="grid-container">
+     
+        <article class="grid-item">
+            <h2> <%= entry.title %> </h2>
+            <p> <%= entry.date %> </p>
+            <img src="<%= entry.photo %>" alt="<%= entry.title %>" title="<%= entry.title %>">
+            <p> <%= entry.body %> </p>
+        </article>
+
+</section>
+
+<%- include('./templates/footer.ejs') %>

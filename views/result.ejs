@@ -1,0 +1,44 @@
+<%- include('./templates/header.ejs') %>
+
+<%- include('./templates/nav.ejs') %>
+
+<section class="search-bar">
+
+    <form action="/search" method="GET">
+        <input id="search" name="search" class="search-bar-text" type="text" placeholder="Buscador de entradas">
+        <input id="btn-search" class="search-bar-submit" type="submit" value="Buscar">
+    </form>
+
+</section>
+
+<section class="grid-container">
+
+    <% if (entries.length > 0) { %>
+
+        <p>Se han encontrado <strong><%= entries.length %></strong> resultados con la palabra <strong><%= search %></strong>:</p>
+     
+        <% entries.forEach(entry => { %>
+
+            <article class="grid-item">
+                <h2> <%= entry.title %> </h2>
+                <p> <%= entry.date %> </p>
+                <img src="<%= entry.photo %>" alt="<%= entry.title %>" title="<%= entry.title %>">
+                <p> <%= entry.extract %> </p>
+                <a href="/entry/<%= entry._id %>">Leer más</a>
+            </article>
+         
+        <% }) %>
+
+    <% } else { %>
+     
+        <p>No se han encontrado entradas que contengan la palabra <strong><%= search %></strong>.</p>
+
+    <% } %>
+
+</section>
+
+<div id="paginate" class="paginate">
+
+</div>
+
+<%- include('./templates/footer.ejs') %>
