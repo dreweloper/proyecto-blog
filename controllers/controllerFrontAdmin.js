@@ -4,7 +4,9 @@ const fs = require('fs').promises;
 
 const getEntries = async (req, res) => {
 
-    const url = `${process.env.URL_BASE_API_ENTRIES}/?limit=20`;
+    const page = req.query.page || 1;
+
+    const url = `${process.env.URL_BASE_API_ENTRIES}/?page=${page}&limit=5`; // modificar el query "limit" cuando cambie las cards por la tabla
 
     try {
 
@@ -13,7 +15,8 @@ const getEntries = async (req, res) => {
         if(ok){
 
             res.render('../views/admin/dashboard-admin.ejs', {
-                entries: response.entries.docs
+                entries: response.entries.docs,
+                pagination: response.entries
             });
 
         };

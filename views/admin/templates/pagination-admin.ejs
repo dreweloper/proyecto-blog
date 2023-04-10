@@ -4,19 +4,19 @@
 
         <% if (pagination.prevPage != null) { %>
 
-            <a href="http://localhost:3000/search?search=<%= search %>&page=<%= pagination.prevPage %>" id="btn-prev" data-page="<%= pagination.prevPage %>"> << </a>
+            <a href="http://localhost:3000/dashboard-admin/?page=<%= pagination.prevPage %>" id="btn-prev" data-page="<%= pagination.prevPage %>"> << </a>
             
         <% } %>
 
         <% if (pagination.totalPages > 1) { %>
 
-            <a href="http://localhost:3000/search?search=<%= search %>&page=<%= pagination.page %>"> <%= pagination.page %> </a>
+            <a href="http://localhost:3000/dashboard-admin/?page=<%= pagination.page %>"> <%= pagination.page %> </a>
             
         <% } %>
 
         <% if (pagination.nextPage != null) { %>
 
-            <a href="http://localhost:3000/search?search=<%= search %>&page=<%= pagination.nextPage %>" id="btn-next" data-page="<%= pagination.nextPage %>"> >> </a>
+            <a href="http://localhost:3000/dashboard-admin/?page=<%= pagination.nextPage %>" id="btn-next" data-page="<%= pagination.nextPage %>"> >> </a>
             
         <% } %>
 
