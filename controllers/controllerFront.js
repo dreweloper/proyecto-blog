@@ -2,8 +2,10 @@ const fetchingData = require('../helpers/fetch');
 
 
 const getEntries = async (req, res) => {
+
+    const page = req.query.page || 1;
     
-    const url = `${process.env.URL_BASE_API_ENTRIES}/?page=${req.query.page}`; // pasándole el valor de 'req.query.page' avanza o retrocede, según lo que reciba, en la paginación de MongoDB
+    const url = `${process.env.URL_BASE_API_ENTRIES}/?page=${page}`;
 
     try {
 
@@ -11,6 +13,7 @@ const getEntries = async (req, res) => {
 
         res.render('index', {
             entries: response.entries.docs,
+            pagination: response.entries,
             token: req.cookies.token || ''
         });
         
@@ -51,7 +54,9 @@ const getEntry = async (req, res) => {
 
 const searchEntries = async (req, res) => {
 
-    const url = `${process.env.URL_BASE_API_ENTRIES}/?search=${req.query.search}`; // "obligo" al fetch a que entre por el 'if' del controller getEntries del back
+    const page = req.query.page || 1;
+
+    const url = `${process.env.URL_BASE_API_ENTRIES}/?search=${req.query.search}&page=${page}`; // "obligo" al fetch a que entre por el 'if' del controller getEntries del back
     
     try {
 
@@ -62,7 +67,8 @@ const searchEntries = async (req, res) => {
             res.render('result', {
                 entries: response.entries.docs,
                 search: req.query.search,
-                token: req.cookies.token || ''
+                token: req.cookies.token || '',
+                pagination: response.entries
             });
 
         } else {
