@@ -2,7 +2,7 @@ const fetchingData = require('../helpers/fetch');
 const fs = require('fs').promises;
 
 /**
- * Obtiene todas las entradas de la bbdd y las renderiza en la vista del dashboard-admin.
+ * Obtiene todas las entradas de la bbdd y las renderiza en la vista 'dashboard-admin'.
  * @function getEntries
  * @async
  * @param {Object} req Objeto de solicitud
@@ -51,7 +51,7 @@ const formAddEntry = async (req, res) => {
 }; //!FUNC-FORMADDENTRY
 
 /**
- * Crea una entrada y redirige a la vista dashboard-admin.
+ * Crea una entrada y redirige a la vista 'dashboard-admin'.
  * @function addEntry
  * @async
  * @param {Object} req Objeto de solicitud
@@ -81,8 +81,8 @@ const addEntry = async (req, res) => {
 }; //!FUNC-ADDENTRY
 
 /**
- * Renderiza la vista del formulario para editar entradas mostrando los valores de las propiedades que ya existen en la bbdd capturando el ID a través del params.
- * @function formAddEntry
+ * Renderiza la vista del formulario para editar entradas mostrando los valores de las propiedades que ya existen en la bbdd capturando el 'id' a través del params.
+ * @function formUpdateEntry
  * @async
  * @param {Object} req Objeto de solicitud
  * @param {Object} res Objeto de respuesta 
@@ -109,7 +109,7 @@ const formUpdateEntry = async (req, res) => {
 }; //!FUNC-FORMUPDATEENTRY
 
 /**
- * Actualiza una entrada y redirige a la vista dashboard-admin.
+ * Actualiza una entrada y redirige a la vista 'dashboard-admin'.
  * @function updateEntry
  * @async
  * @param {Object} req Objeto de solicitud
@@ -153,8 +153,8 @@ const updateEntry = async (req, res) => {
 }; //!FUNC-UPDATEENTRY
 
 /**
- * Elimina una entrada capturando el ID a través del params y redirige a la vista dashboard-admin.
- * @function updateEntry
+ * Elimina una entrada capturando el 'id' a través del params y redirige a la vista 'dashboard-admin'.
+ * @function deleteEntry
  * @async
  * @param {Object} req Objeto de solicitud
  * @param {Object} res Objeto de respuesta  

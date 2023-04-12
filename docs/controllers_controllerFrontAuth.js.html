@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: controllers/controllerFront.js</title>
+    <title>JSDoc: Source: controllers/controllerFrontAuth.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: controllers/controllerFront.js</h1>
+    <h1 class="page-title">Source: controllers/controllerFrontAuth.js</h1>
 
     
 
@@ -29,116 +29,99 @@
             <pre class="prettyprint source linenums"><code>const fetchingData = require('../helpers/fetch');
 
 /**
- * Obtiene todas las entradas de la bbdd
- * @function getEntries
+ * Si no hay token en las cookies, renderiza la vista 'login' con el formulario.
+ * @function formLogin
  * @async
  * @param {Object} req Objeto de solicitud
  * @param {Object} res Objeto de respuesta
+ * @returns Si hay token en las cookies, redirige al '/dashboard-admin'
  */
 
-const getEntries = async (req, res) => {
+const formLogin = async (req, res) => {
 
-    const page = req.query.page || 1;
-    
-    const url = `${process.env.URL_BASE_API_ENTRIES}/?page=${page}`;
+    if(req.cookies.token != undefined){
 
-    try {
-
-        const { response } = await fetchingData(url);
-
-        res.render('index', {
-            entries: response.entries.docs,
-            pagination: response.entries,
-            token: req.cookies.token || ''
-        });
-        
-    } catch (error) {
-
-        console.log(error);
-        
-    };
-    
-}; //!FUNC-GETENTRIES
-
-/**
- * Obtiene una entrada de la bbdd según el valor de la query 'id'
- * @function getEntry
- * @async
- * @param {Object} req Objeto de solicitud
- * @param {Object} res Objeto de respuesta
- */
-
-const getEntry = async (req, res) => {
-
-    const url = `${process.env.URL_BASE_API_ENTRIES}/${req.params.id}`;
-
-    try {
-        
-        const { ok, response } = await fetchingData(url);
-
-        if(ok){
-
-            res.render('entry.ejs', {
-                entry: response.entry,
-                token: req.cookies.token || ''
-            });
-
-        };
-
-    } catch (error) {
-        
-        console.log(error);
+        return res.redirect('/dashboard-admin');
 
     };
 
-}; //!FUNC-GETENTRY
+    res.render('login', {
+        token: req.cookies.token || '',
+        error: [] // si no, da error porque el middleware 'validateResult' no le ha enviado nada al renderizar el ejs
+    });
+
+}; //!FUNC-FORMLOGIN
 
 /**
- * Obtiene las entradas de la bbdd según el valor de la query 'search'
- * @function searchEntries
+ * Si las credenciales son correctas, guarda el token en las cookies y redirige al '/dashboard-admin'; si no, redirige a la misma página del login.
+ * @function checkAuth
  * @async
  * @param {Object} req Objeto de solicitud
  * @param {Object} res Objeto de respuesta
  */
 
-const searchEntries = async (req, res) => {
+const checkAuth = async (req, res) => {
 
-    const page = req.query.page || 1;
+    let url = `${process.env.URL_BASE_API_USERS}/auth`;
+    let method = 'POST';
+    let body = req.body;
 
-    const url = `${process.env.URL_BASE_API_ENTRIES}/?search=${req.query.search}&amp;page=${page}`; // "obligo" al fetch() a que entre por el 'if' del controller getEntries del back
-    
     try {
 
-        if(req.query.search != ''){ // solución temporal hasta que aplique el check (express-validator) al input del buscador
+        const auth = await fetchingData(url, method, body);
 
-            const { response } = await fetchingData(url);
+        if(!auth){
 
-            res.render('result', {
-                entries: response.entries.docs,
-                search: req.query.search,
-                token: req.cookies.token || '',
-                pagination: response.entries
-            });
+            res.redirect('/login');
+            
+            // res.render('login', { //! pendiente revisar el res.render y desarrollar el login.ejs (y corregir la documentación)
+            //     msg: 'E-mail o password incorrecto.',
+            //     token: req.cookies.token || '',
+            //     error: [] // si no, da error porque el middleware 'validateResult' no le ha enviado nada al renderizar el ejs
+            // }); 
 
         } else {
 
-            res.redirect('/'); // solución temporal hasta que aplique el check (express-validator) al input del buscador
+            const { response } = auth;
+
+            res.cookie('token', response.token, {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'strict',
+                maxAge: 60 * 5000
+            });
+
+            res.redirect('/dashboard-admin');
 
         };
         
     } catch (error) {
-
-        console.log(error);
         
+        console.log(error);
+
     };
 
-}; //!FUNC-SEARCHENTRIES
+}; //!FUNC-CHECKAUTH
+
+/**
+ * Elimina el token de las cookies y redirige al index.
+ * @function logoutUser
+ * @async
+ * @param {Object} req Objeto de solicitud
+ * @param {Object} res Objeto de respuesta
+ */
+
+const logoutUser = async (req, res) => {
+
+    res.clearCookie('token').redirect('/');
+
+}; //!FUNC-LOGOUTUSER
 
 
 module.exports = {
-    getEntries,
-    getEntry,
-    searchEntries
+    formLogin,
+    checkAuth,
+    logoutUser
 };</code></pre>
         </article>
     </section>

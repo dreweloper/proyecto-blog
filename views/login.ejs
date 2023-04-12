@@ -4,31 +4,31 @@
 
 <section class="grid-container">
 
-    <form action="/auth" method="POST" class="login-form">
-        <h2 class="login-title uppercase">Login</h2>
-    
-        <div class="input-parent">
-          <label for="email" class="front-label">E-mail:</label>
-          <input id="email" name="email" type="text">
-        </div>
-    
-        <div class="input-parent">
-          <label for="password" class="front-label">Password:</label>
-          <input id="password" name="password" type="password">
-        </div>
-    
-        <input type="submit" class="login-submit pointer" value="Iniciar sesión">
-      </form>
+  <form action="/auth" method="POST" class="login-form">
+    <h2 class="login-title uppercase">Login</h2>
 
-    <% if (error.length > 0) { %>
+    <div class="input-parent">
+      <label for="email" class="front-label">E-mail:</label>
+      <input id="email" name="email" type="text">
+    </div>
 
-        <% error.forEach(item => { %>
+    <div class="input-parent">
+      <label for="password" class="front-label">Password:</label>
+      <input id="password" name="password" type="password">
+    </div>
 
-            <p> <%= item.msg %> </p>
-         
-        <% }) %>
-     
-    <% } %>
+    <input type="submit" class="login-submit pointer" value="Iniciar sesión">
+  </form>
+
+  <% if (error.length > 0) { %>
+
+    <% error.forEach(item => { %>
+
+      <p> <%= item.msg %> </p>
+      
+    <% }) %>
+    
+  <% } %>
 
 </section>
 

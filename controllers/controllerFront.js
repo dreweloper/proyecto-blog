@@ -1,7 +1,7 @@
 const fetchingData = require('../helpers/fetch');
 
 /**
- * Obtiene todas las entradas de la bbdd
+ * Obtiene todas las entradas de la bbdd.
  * @function getEntries
  * @async
  * @param {Object} req Objeto de solicitud
@@ -33,7 +33,7 @@ const getEntries = async (req, res) => {
 }; //!FUNC-GETENTRIES
 
 /**
- * Obtiene una entrada de la bbdd según el valor de la query 'id'
+ * Obtiene una entrada de la bbdd según el valor de la query 'id'.
  * @function getEntry
  * @async
  * @param {Object} req Objeto de solicitud
@@ -66,7 +66,7 @@ const getEntry = async (req, res) => {
 }; //!FUNC-GETENTRY
 
 /**
- * Obtiene las entradas de la bbdd según el valor de la query 'search'
+ * Obtiene las entradas de la bbdd según el valor de la query 'search'.
  * @function searchEntries
  * @async
  * @param {Object} req Objeto de solicitud
