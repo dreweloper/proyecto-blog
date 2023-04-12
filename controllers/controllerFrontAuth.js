@@ -1,5 +1,13 @@
 const fetchingData = require('../helpers/fetch');
 
+/**
+ * Si no hay token en las cookies, renderiza la vista 'login' con el formulario.
+ * @function formLogin
+ * @async
+ * @param {Object} req Objeto de solicitud
+ * @param {Object} res Objeto de respuesta
+ * @returns Si hay token en las cookies, redirige al '/dashboard-admin'
+ */
 
 const formLogin = async (req, res) => {
 
@@ -16,6 +24,14 @@ const formLogin = async (req, res) => {
 
 }; //!FUNC-FORMLOGIN
 
+/**
+ * Verifica si
+ * @function checkAuth
+ * @async
+ * @param {Object} req Objeto de solicitud
+ * @param {Object} res Objeto de respuesta
+ * @returns Si 
+ */
 
 const checkAuth = async (req, res) => {
 
@@ -29,7 +45,7 @@ const checkAuth = async (req, res) => {
 
         if(!auth){
             
-            res.redirect('/login');
+            res.redirect('/login'); //! cambiar por un render ('login') y pinto el msg de error: 'E-mail o password incorrecto.'
 
         } else {
 
@@ -42,7 +58,7 @@ const checkAuth = async (req, res) => {
                 maxAge: 60 * 5000
             });
 
-            return res.redirect('/dashboard-admin');
+            res.redirect('/dashboard-admin');
 
         };
         

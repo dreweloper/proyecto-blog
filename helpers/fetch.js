@@ -1,7 +1,8 @@
-const fetching = require('node-fetch');
+//const fetch = require('node-fetch');
 
 /**
- * @function
+ * Conexión con las APIs.
+ * @function fetchingData
  * @async
  * @param {String} url Recibe la url de la API
  * @param {String} [method] Recibe el método HTTP
@@ -13,7 +14,6 @@ const fetching = require('node-fetch');
 const fetchingData = async (url, method, body = {}) => {
 
     /**
-     * Opciones
      * @typedef {Object} options Opciones del fetch()
      * @property {String} [method] Método HTTP
      * @property {String} [body] Método JSON.stringify() sobre el parámetro body
@@ -27,7 +27,15 @@ const fetchingData = async (url, method, body = {}) => {
     if(method == 'POST' || method == 'PUT'){
 
         /**
-         * @const {Object} data Recoge el objeto del parámetro body
+         * @typedef {Object} body
+         * @property {String} title Título de la entrada
+         * @property {String} extract Extracto de la entrada
+         * @property {String} body Cuerpo de la entrada
+         * @property {String} photo URL de la imagen de la entrada
+         */
+
+        /**
+         * @type {body}
          */
 
         const data = { ...body };

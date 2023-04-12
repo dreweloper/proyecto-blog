@@ -1,7 +1,8 @@
 const fetchingData = require('../helpers/fetch');
 
 /**
- * @function
+ * Obtiene todas las entradas de la bbdd
+ * @function getEntries
  * @async
  * @param {Object} req Objeto de solicitud
  * @param {Object} res Objeto de respuesta
@@ -9,15 +10,7 @@ const fetchingData = require('../helpers/fetch');
 
 const getEntries = async (req, res) => {
 
-    /**
-     * @const {Number} page Recibe el valor del query page o 1 será su valor por defecto
-     */
-
     const page = req.query.page || 1;
-
-    /**
-     * @const {String} url Ruta de la API que se envía al fetch() como argumento
-     */
     
     const url = `${process.env.URL_BASE_API_ENTRIES}/?page=${page}`;
 
@@ -40,17 +33,14 @@ const getEntries = async (req, res) => {
 }; //!FUNC-GETENTRIES
 
 /**
- * @function
+ * Obtiene una entrada de la bbdd según el valor de la query 'id'
+ * @function getEntry
  * @async
  * @param {Object} req Objeto de solicitud
  * @param {Object} res Objeto de respuesta
  */
 
 const getEntry = async (req, res) => {
-
-    /**
-    * @const {String} url Ruta de la API que se envía al fetch() como argumento
-    */
 
     const url = `${process.env.URL_BASE_API_ENTRIES}/${req.params.id}`;
 
@@ -76,7 +66,8 @@ const getEntry = async (req, res) => {
 }; //!FUNC-GETENTRY
 
 /**
- * @function
+ * Obtiene las entradas de la bbdd según el valor de la query 'search'
+ * @function searchEntries
  * @async
  * @param {Object} req Objeto de solicitud
  * @param {Object} res Objeto de respuesta
@@ -84,17 +75,9 @@ const getEntry = async (req, res) => {
 
 const searchEntries = async (req, res) => {
 
-    /**
-    * @const {Number} page Recibe el valor del query page o 1 será su valor por defecto
-    */
-
     const page = req.query.page || 1;
 
-    /**
-    * @const {String} url Ruta de la API que se envía al fetch() como argumento
-    */
-
-    const url = `${process.env.URL_BASE_API_ENTRIES}/?search=${req.query.search}&page=${page}`; // "obligo" al fetch a que entre por el 'if' del controller getEntries del back
+    const url = `${process.env.URL_BASE_API_ENTRIES}/?search=${req.query.search}&page=${page}`; // "obligo" al fetch() a que entre por el 'if' del controller getEntries del back
     
     try {
 

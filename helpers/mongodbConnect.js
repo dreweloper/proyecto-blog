@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 /**
+ * Conexión con MongoDB.
  * @function
  * @async
  * @returns La respuesta de la conexión a MongoDB
@@ -10,10 +11,6 @@ const mongoose = require('mongoose');
 const connection = async () => {
 
     try {
-
-        /**
-         * @const {Object} response Respuesta de la conexión a MongoDB
-         */
 
         const response = await mongoose.connect(process.env.URI_CONNECT);
 

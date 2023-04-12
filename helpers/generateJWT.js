@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 /**
+ * Crear el token tanto en el login como en el registro de usuarios.
  * @function
  * @param {Object} uid ID del usuario
  * @param {String} name Nombre del usuario
@@ -10,17 +11,9 @@ const jwt = require('jsonwebtoken');
 
 const generateJWT = (uid, name) => {
 
-    /**
-     * @type {Object}
-     */
-
     let payload = { uid, name };
 
     try {
-
-        /**
-         * @const {String} token Token generado por JWT para el login de usuario/admin
-         */
         
         const token = jwt.sign(
             payload,
