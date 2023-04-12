@@ -1,3 +1,5 @@
+const fetch = require('node-fetch');
+
 const fetchingData = async (url, method, body = {}) => {
 
     let options = {};
