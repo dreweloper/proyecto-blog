@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const fetching = require('node-fetch');
 
 /**
  * @function
