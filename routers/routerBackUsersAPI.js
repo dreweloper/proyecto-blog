@@ -11,7 +11,7 @@ const {
 // REGISTER
 router.post('/register', createUser); // action form value
 
-// LOG IN
+// LOGIN
 router.post('/auth', loginUser);
 
 // RENEW JWT

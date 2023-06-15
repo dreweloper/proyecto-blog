@@ -15,7 +15,7 @@ const getEntries = async (req, res) => {
         if(req.query.search != undefined){ // si la propiedad "search" existe en el objeto "req.query", buscará en MongoDB según su valor (de "search"); en caso contrario, entra en el 'else'
 
             const entries = await Entry.paginate( // utilizo el método 'paginate()' (funciona igual que el 'find()') del módulo 'mongoose-paginate-v2' para la paginación automática
-                { $or: [ { title: search }, { extract: search }, { body: search } ] }, // si lo que busca ("search") lo encuentra en "title", "extract" o "body", lo devuelve
+                { $or: [ { title: search }, { body: search } ] }, // si lo que busca ("search") lo encuentra en "title" o "body", lo devuelve
                 { page, limit } // 'options' del método 'paginate' donde indico los valores (const page, limit) de las propiedades "limit" y "page"
             );
 

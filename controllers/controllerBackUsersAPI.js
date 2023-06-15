@@ -56,7 +56,7 @@ const loginUser = async (req, res) => {
 
             return res.status(401).json({
                 ok: false,
-                msg: 'ERROR: e-maill o password incorrecto.'
+                msg: 'E-mail o password incorrecto.'
             });
 
         } else {
