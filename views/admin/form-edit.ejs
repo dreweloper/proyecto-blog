@@ -6,7 +6,7 @@
 
     <h2 class="uppercase">Editar entrada:</h2>
 
-    <form class="grid-item" action="/dashboard-admin/update/<%= entry._id %>" method="POST" enctype="multipart/form-data">
+    <form class="grid-item" action="/dashboard-admin/update/<%= entry._id %>" method="POST" enctype="multipart/form-data" autocomplete="off">
 
         <input id="title" name="title" class="item" type="text" placeholder="Título de la entrada" value="<%= entry.title %>">
 
