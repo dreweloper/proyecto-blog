@@ -8,7 +8,6 @@ const fs = require('fs').promises;
  * @param {Object} req Objeto de solicitud
  * @param {Object} res Objeto de respuesta
  */
-
 const getEntries = async (req, res) => {
 
     const page = req.query.page || 1;
@@ -43,7 +42,6 @@ const getEntries = async (req, res) => {
  * @param {Object} req Objeto de solicitud
  * @param {Object} res Objeto de respuesta 
  */
-
 const formAddEntry = async (req, res) => {
 
     res.render('../views/admin/form-new.ejs');
@@ -57,7 +55,6 @@ const formAddEntry = async (req, res) => {
  * @param {Object} req Objeto de solicitud
  * @param {Object} res Objeto de respuesta 
  */
-
 const addEntry = async (req, res) => {
 
     req.body.photo = `${process.env.URL_BASE_MULTER}/${req.file.filename}`; // asigno la url del input file (image) a la propiedad "photo" del entrySchema
@@ -87,7 +84,6 @@ const addEntry = async (req, res) => {
  * @param {Object} req Objeto de solicitud
  * @param {Object} res Objeto de respuesta 
  */
-
 const formUpdateEntry = async (req, res) => {
 
     const url = `${process.env.URL_BASE_API_ENTRIES}/${req.params.id}`; // solo necesito el id para completar la url
@@ -115,7 +111,6 @@ const formUpdateEntry = async (req, res) => {
  * @param {Object} req Objeto de solicitud
  * @param {Object} res Objeto de respuesta  
  */
-
 const updateEntry = async (req, res) => {
 
     // variables
@@ -159,7 +154,6 @@ const updateEntry = async (req, res) => {
  * @param {Object} req Objeto de solicitud
  * @param {Object} res Objeto de respuesta  
  */
-
 const deleteEntry = async (req, res) => {
 
     const url = `${process.env.URL_BASE_API_ENTRIES}/${req.params.id}`;

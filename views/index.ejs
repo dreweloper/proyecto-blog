@@ -4,7 +4,7 @@
 
 <section class="search-bar">
 
-    <form action="/search" method="GET">
+    <form action="/search" method="GET" autocomplete="off">
         <input id="search" name="search" class="search-bar-text" type="text" placeholder="Buscador de entradas">
         <input type="submit" class="search-bar-submit" value="Buscar">
     </form>
@@ -19,7 +19,7 @@
 
             <article class="grid-item">
                 <h2> <%= entry.title %> </h2>
-                <p> <%= entry.date %> </p>
+                <p> <%= entry.date.substring(0, 10) %> </p>
                 <img src="<%= entry.photo %>" alt="<%= entry.title %>" title="<%= entry.title %>">
                 <p> <%= entry.extract %> </p>
                 <a class="boton" href="/entry/<%= entry._id %>">Leer más</a>
