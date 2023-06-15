@@ -1,5 +1,13 @@
 const jwt = require('jsonwebtoken');
 
+/**
+ * Crear el token tanto en el login como en el registro de usuarios.
+ * @function
+ * @param {Object} uid ID del usuario
+ * @param {String} name Nombre del usuario
+ * @returns {String} Token
+ * @throws Mensaje de error
+ */
 
 const generateJWT = (uid, name) => {
 

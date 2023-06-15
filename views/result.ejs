@@ -15,7 +15,7 @@
 
     <% if (entries.length > 0) { %>
 
-        <p>Se han encontrado <strong><%= entries.length %></strong> resultados con la palabra <strong><%= search %></strong>:</p>
+        <p>Se han encontrado <strong><%= pagination.totalDocs %></strong> resultados con la palabra <strong><%= search %></strong>:</p>
      
         <% entries.forEach(entry => { %>
 
@@ -37,8 +37,6 @@
 
 </section>
 
-<div id="paginate" class="paginate">
-
-</div>
+<%- include('./templates/pagination-result.ejs') %>
 
 <%- include('./templates/footer.ejs') %>
