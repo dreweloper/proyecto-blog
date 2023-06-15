@@ -1,4 +1,4 @@
-//const fetch = require('node-fetch');
+const fetch = require('node-fetch');
 
 /**
  * Conexión con las APIs.
@@ -10,7 +10,6 @@
  * @returns {Promise} Objeto del cuerpo del JSON de la respuesta
  * @throws Mensaje de error
  */
-
 const fetchingData = async (url, method, body = {}) => {
 
     /**
