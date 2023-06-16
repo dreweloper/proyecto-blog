@@ -2,35 +2,39 @@
 
 <%- include('./templates/nav-admin.ejs') %>
 
-<h2 class="uppercase text-center">Dashboard admin</h2>
+<main>
 
-<section class="grid-container">
+    <h2 class="uppercase text-center">Dashboard admin</h2>
 
-    <a class="boton flex-start" href="/dashboard-admin/form-new">Crear entrada</a>
+    <section class="grid-container">
 
-    <% if (entries.length > 0) { %>
+        <a class="boton flex-start" href="/dashboard-admin/form-new">Crear entrada</a>
 
-        <% entries.forEach(item => { %>
+        <% if (entries.length > 0) { %>
 
-            <article class="grid-item">
-                <h3> <%= item.title %> </h3>
-                <img src="<%= item.photo %>" alt="<%= item.title %>" title="<%= item.title %>">
-                <p> <%= item.extract %> </p>
-                <p> <%= item.date.substring(0, 10) %> </p>
-                <a class="boton" href="/dashboard-admin/form-edit/<%= item._id %>">Editar entrada</a>
-                <a class="boton" href="/dashboard-admin/delete/<%= item._id %>">Eliminar entrada</a>
-            </article>
+            <% entries.forEach(item => { %>
+
+                <article class="grid-item">
+                    <h3> <%= item.title %> </h3>
+                    <img src="<%= item.photo %>" alt="<%= item.title %>" title="<%= item.title %>">
+                    <p> <%= item.extract %> </p>
+                    <p> <%= item.date.substring(0, 10) %> </p>
+                    <a class="boton" href="/dashboard-admin/form-edit/<%= item._id %>">Editar entrada</a>
+                    <a class="boton" href="/dashboard-admin/delete/<%= item._id %>">Eliminar entrada</a>
+                </article>
+            
+            <% }) %>
+
+        <% } else { %>
         
-        <% }) %>
+            <p>No hay entradas…</p>
+        
+        <% } %>
 
-    <% } else { %>
-    
-        <p>No hay entradas…</p>
-    
-    <% } %>
+    </section>
 
-</section>
+    <%- include('./templates/pagination-admin.ejs') %>
 
-<%- include('./templates/pagination-admin.ejs') %>
+</main>
 
 <%- include('./templates/footer-admin.ejs') %>
