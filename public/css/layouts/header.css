@@ -1,0 +1,119 @@
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--height-standard);
+    background-color: var(--dark);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo, .nav-menu-link{
+    color: var(--light);
+    text-decoration: none;
+}
+
+.logo{
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 40px;
+    line-height: 80px;
+}
+
+.nav-toggle{
+    display: none;
+    font-size: 1.5rem;
+    color: var(--light);
+    background: none;
+    border: none;
+    padding: 0 20px;
+    line-height: 60px;
+    cursor: pointer; /* aparece el cursor sobre el ícono bars */
+}
+
+.nav-menu{
+    display: flex;
+    list-style: none;
+    margin-right: 40px;
+}
+
+.nav-menu-item{
+    font-size: 1.2rem;
+    line-height: 80px;
+    width: max-content;
+    text-transform: uppercase;
+    margin: 0 10px;
+}
+
+.nav-menu-link{
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.nav-menu-link:hover{
+    transition: 0.5s;
+    color: var(--dark);
+    background-color: var(--light);
+}
+
+
+
+/***** MEDIA QUERY 992PX START *****/
+
+@media screen and (max-width:992px) {
+    
+    .header{
+        height: 60px;
+    }
+    
+    .logo{
+        font-size: 1.8rem;
+        line-height: 60px;
+        padding: 0 20px;
+    }
+    
+    .nav-toggle{
+        display: block;
+    }
+    
+    .nav-menu{
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        top: 60px; /* respeta el heigth del header */
+        width: 100%;
+        height: calc(100% - 60px); /* calcula la altura total restándole el height del header */
+        overflow-y: auto; /* aparece el scroll en caso de ser necesario */
+        left: 100%; /* el menú está fuera de la pantalla hacia la derecha */
+        transition: left 0.3s;
+        padding: 20px 0;
+        margin: 0;
+        background-color: var(--light);
+    }
+
+    .nav-menu-link{
+        color: var(--dark);
+    }
+
+    .nav-menu-link:hover{
+        color: var(--light);
+        background-color: var(--dark);
+    }
+    
+    .nav-menu-item{
+        line-height: 70px;
+    }
+
+    .nav-menu_visible{
+        left: 0; /* clase que aplicará la transición para que aparezca el nav-menu */
+    }
+
+} /*992PX END*/

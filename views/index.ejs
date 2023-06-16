@@ -2,43 +2,40 @@
 
 <%- include('./templates/nav.ejs') %>
 
-<section class="search-bar">
+<main>
 
-    <form action="/search" method="GET" autocomplete="off">
-        <input id="search" name="search" class="search-bar-text" type="text" placeholder="Buscador de entradas">
-        <input type="submit" class="search-bar-submit" value="Buscar">
-    </form>
+    <%- include('./templates/search-bar.ejs') %>
 
-</section>
+    <section class="grid-container">
 
-<section class="grid-container">
+        <% if (entries.length > 0) { %>
+        
+            <% entries.forEach(entry => { %>
 
-    <% if (entries.length > 0) { %>
-     
-        <% entries.forEach(entry => { %>
+                <article class="grid-item">
+                    <h2> <%= entry.title %> </h2>
+                    <p> <%= entry.date.substring(0, 10).split('-').reverse().join('-').replaceAll('-', '/') %> </p>
+                    <img src="<%= entry.photo %>" alt="<%= entry.title %>" title="<%= entry.title %>">
+                    <p> <%= entry.extract %> </p>
+                    <a class="boton" href="/entry/<%= entry._id %>">Leer más</a>
+                </article>
 
-            <article class="grid-item">
-                <h2> <%= entry.title %> </h2>
-                <p> <%= entry.date.substring(0, 10) %> </p>
-                <img src="<%= entry.photo %>" alt="<%= entry.title %>" title="<%= entry.title %>">
-                <p> <%= entry.extract %> </p>
-                <a class="boton" href="/entry/<%= entry._id %>">Leer más</a>
-            </article>
+            <% }) %>
 
-        <% }) %>
+        <% } else { %>
+        
+            <p> No hay entradas… </p>
 
-    <% } else { %>
-     
-        <p> No hay entradas… </p>
+        <% } %>
 
-    <% } %>
+    </section>
 
-</section>
+    <!-- <div id="paginate" class="paginate">
 
-<!-- <div id="paginate" class="paginate">
+    </div> -->
 
-</div> -->
+    <%- include('./templates/pagination-index.ejs') %>
 
-<%- include('./templates/pagination-index.ejs') %>
+</main>
 
 <%- include('./templates/footer.ejs') %>

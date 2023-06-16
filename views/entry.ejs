@@ -2,24 +2,21 @@
 
 <%- include('./templates/nav.ejs') %>
 
-<section class="search-bar">
+<main>
 
-    <form action="/search" method="GET" autocomplete="off">
-        <input id="search" name="search" class="search-bar-text" type="text" placeholder="Buscador de entradas">
-        <input type="submit" class="search-bar-submit" value="Buscar">
-    </form>
+    <%- include('./templates/search-bar.ejs') %>
 
-</section>
+    <section class="grid-container">
+        
+            <article class="grid-item">
+                <h2> <%= entry.title %> </h2>
+                <p> <%= entry.date.substring(0, 10).split('-').reverse().join('-').replaceAll('-', '/') %> </p>
+                <img src="<%= entry.photo %>" alt="<%= entry.title %>" title="<%= entry.title %>">
+                <p> <%= entry.body %> </p>
+            </article>
 
-<section class="grid-container">
-     
-        <article class="grid-item">
-            <h2> <%= entry.title %> </h2>
-            <p> <%= entry.date.substring(0, 10) %> </p>
-            <img src="<%= entry.photo %>" alt="<%= entry.title %>" title="<%= entry.title %>">
-            <p> <%= entry.body %> </p>
-        </article>
+    </section>
 
-</section>
+</main>
 
 <%- include('./templates/footer.ejs') %>
