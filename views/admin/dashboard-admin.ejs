@@ -18,7 +18,7 @@
                     <h3> <%= item.title %> </h3>
                     <img src="<%= item.photo %>" alt="<%= item.title %>" title="<%= item.title %>">
                     <p> <%= item.extract %> </p>
-                    <p> <%= item.date.substring(0, 10) %> </p>
+                    <p> <%= item.date.substring(0, 10).split('-').reverse().join('-').replaceAll('-', '/') %> </p>
                     <a class="boton" href="/dashboard-admin/form-edit/<%= item._id %>">Editar entrada</a>
                     <a class="boton" href="/dashboard-admin/delete/<%= item._id %>">Eliminar entrada</a>
                 </article>
