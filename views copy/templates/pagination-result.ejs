@@ -1,0 +1,29 @@
+<% if (pagination.totalPages > 1) { %>
+
+    <div id="paginate" class="paginate">
+
+        <% if (pagination.prevPage != null) { %>
+
+            <a href="http://localhost:3000/search?search=<%= search %>&page=<%= pagination.prevPage %>" id="btn-prev" data-page="<%= pagination.prevPage %>">
+            
+                <i class="fa-solid fa-arrow-left"></i>
+
+            </a>
+            
+        <% } %>
+
+        <p> <%= pagination.page %> </p>
+
+        <% if (pagination.nextPage != null) { %>
+
+            <a href="http://localhost:3000/search?search=<%= search %>&page=<%= pagination.nextPage %>" id="btn-next" data-page="<%= pagination.nextPage %>">
+            
+                <i class="fa-solid fa-arrow-right"></i>
+            
+            </a>
+            
+        <% } %>
+
+    </div>
+    
+<% } %>
