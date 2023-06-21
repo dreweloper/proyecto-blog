@@ -6,6 +6,7 @@
     width: 100%;
     height: var(--height-standard);
     background-color: var(--dark);
+    z-index: 1;
 }
 
 .nav {
@@ -69,10 +70,6 @@
 /***** MEDIA QUERY 992PX START *****/
 
 @media screen and (max-width:992px) {
-    
-    .header{
-        height: 60px;
-    }
     
     .logo{
         font-size: 1.8rem;

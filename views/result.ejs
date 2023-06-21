@@ -9,9 +9,17 @@
     <section class="grid-container">
 
         <% if (entries.length > 0) { %>
+
+            <% if (entries.length == 1) { %>
+
+                <p>Se ha encontrado <strong><%= pagination.totalDocs %></strong> resultado con la palabra <strong><%= search %></strong>:</p>
+
+            <% } else { %>
+             
+                <p>Se han encontrado <strong><%= pagination.totalDocs %></strong> resultados con la palabra <strong><%= search %></strong>:</p>
+             
+            <% } %>
     
-            <p>Se han encontrado <strong><%= pagination.totalDocs %></strong> resultados con la palabra <strong><%= search %></strong>:</p>
-         
             <% entries.forEach(entry => { %>
     
                 <article class="grid-item">
@@ -26,7 +34,7 @@
     
         <% } else { %>
          
-            <p>No se han encontrado entradas que contengan la palabra <strong><%= search %></strong>.</p>
+            <p> No se han encontrado entradas que contengan la palabra <strong><%= search %></strong>. </p>
     
         <% } %>
     

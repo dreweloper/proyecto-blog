@@ -20,10 +20,22 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    height: 100vh;
-    padding-top: 100px;
+}
+
+main {
+    position: absolute;
+    top: var(--height-standard);
+    width: 100%;
+    min-height: calc(100vh - (var(--height-standard)));
+    padding-top: 20px;
     background-color: var(--medium);
 }
+
+/* footer {
+    width: 100%;
+    height: var(--height-standard);
+    background-color: var(--dark);
+} */
 
 img {
     width: 100%;
@@ -53,15 +65,3 @@ button {
     -moz-appearance: none;
     appearance: none;
 }
-
-
-
-/***** MEDIA QUERY 992PX START *****/
-
-@media screen and (max-width:992px) {
-
-    body{
-        padding-top: 80px;
-    }
-
-} /*992PX END*/
