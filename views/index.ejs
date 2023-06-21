@@ -14,7 +14,7 @@
 
                 <article class="grid-item">
                     <h2> <%= entry.title %> </h2>
-                    <p> <%= entry.date.substring(0, 10).split('-').reverse().join('-').replaceAll('-', '/') %> </p>
+                    <p> <%= entry.date.substring(0, 10).split('-').reverse().join('-').replace(/-/g, '/') %> </p>
                     <img src="<%= entry.photo %>" alt="<%= entry.title %>" title="<%= entry.title %>">
                     <p> <%= entry.extract %> </p>
                     <a class="boton" href="/entry/<%= entry._id %>">Leer más</a>
