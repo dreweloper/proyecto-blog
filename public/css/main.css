@@ -26,7 +26,8 @@ main {
     position: absolute;
     top: var(--height-standard);
     width: 100%;
-    min-height: calc(100vh - (var(--height-standard) + var(--height-standard)));
+    min-height: calc(100vh - (var(--height-standard)));
+    padding-top: 20px;
     background-color: var(--medium);
 }
 

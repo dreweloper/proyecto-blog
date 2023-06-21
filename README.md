@@ -1,5 +1,7 @@
 # El Blog
 
+:construction: En proceso de desarrollo :construction:
+
 ---
 
 ## Descripción
@@ -18,6 +20,10 @@ Este proyecto consiste en una aplicación web de un blog con entradas, desarroll
 - Renderización dinámica de vistas utilizando el motor de plantillas EJS.
 - Documentación del código utilizando JSDoc para una mejor comprensión y mantenibilidad.
 - Gestión de imágenes utilizando el paquete Multer.
+
+## Despliegue
+
+La aplicación está desplegada como un servicio web en Render. Puedes acceder a travésd el siguiente enlace: [https://proyecto-blog.onrender.com](https://proyecto-blog.onrender.com).
 
 ---
 

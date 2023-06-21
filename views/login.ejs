@@ -2,34 +2,44 @@
 
 <%- include('./templates/nav.ejs') %>
 
-<section class="grid-container">
+<main>
 
-  <form action="/auth" method="POST" class="login-form" autocomplete="off">
-    <h2 class="login-title uppercase">Login</h2>
+  <section class="grid-container">
+      
+    <form action="/auth" method="POST" class="login-form" autocomplete="off">
 
-    <div class="input-parent">
+      <h2 class="login-title uppercase">Login</h2>
+
+      <div class="input-parent">
+
       <label for="email" class="front-label">E-mail:</label>
       <input id="email" name="email" type="text">
-    </div>
 
-    <div class="input-parent">
+      </div>
+
+      <div class="input-parent">
+
       <label for="password" class="front-label">Password:</label>
       <input id="password" name="password" type="password">
-    </div>
 
-    <input type="submit" class="login-submit pointer" value="Iniciar sesión">
-  </form>
+      </div>
 
-  <% if (error.length > 0) { %>
+      <input type="submit" class="login-submit pointer" value="Iniciar sesión">
 
-    <% error.forEach(item => { %>
+    </form>
+
+    <% if (error.length> 0) { %>
+
+    <% error.forEach(item=> { %>
 
       <p> <%= item.msg %> </p>
-      
-    <% }) %>
-    
-  <% } %>
 
-</section>
+    <% }) %>
+
+    <% } %>
+
+  </section>
+
+</main>
 
 <%- include('./templates/footer.ejs') %>
