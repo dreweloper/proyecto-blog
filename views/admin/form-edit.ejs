@@ -2,26 +2,30 @@
 
 <%- include('./templates/nav-admin.ejs') %>
 
-<section class="grid-container">
+<main>
 
-    <h2 class="uppercase">Editar entrada:</h2>
+    <section class="grid-container">
 
-    <form class="grid-item" action="/dashboard-admin/update/<%= entry._id %>" method="POST" enctype="multipart/form-data">
+        <h2 class="uppercase">Editar entrada:</h2>
 
-        <input id="title" name="title" class="item" type="text" placeholder="Título de la entrada" value="<%= entry.title %>">
+        <form class="grid-item" action="/dashboard-admin/update/<%= entry._id %>" method="POST" enctype="multipart/form-data" autocomplete="off">
 
-        <input id="extract" name="extract" class="item" type="text" placeholder="Extracto de la entrada" value="<%= entry.extract %>">
+            <input id="title" name="title" class="item" type="text" placeholder="Título de la entrada" value="<%= entry.title %>">
 
-        <textarea id="body" name="body" class="item" cols="30" rows="10" placeholder="Cuerpo de la entrada"> <%= entry.body %> </textarea>
+            <input id="extract" name="extract" class="item" type="text" placeholder="Extracto de la entrada" value="<%= entry.extract %>">
 
-        <input id="image" name="image" type="file">
+            <textarea id="body" name="body" class="item" cols="30" rows="10" placeholder="Cuerpo de la entrada"> <%= entry.body %> </textarea>
 
-        <input id="photo" name="photo" type="hidden" value="<%= entry.photo %>">
+            <input id="image" name="image" type="file">
 
-        <input type="submit" class="boton pointer" value="Guardar entrada">
+            <input id="photo" name="photo" type="hidden" value="<%= entry.photo %>">
 
-    </form>
+            <input type="submit" class="boton pointer" value="Guardar entrada">
 
-</section>
+        </form>
+
+    </section>
+
+</main>
 
 <%- include('./templates/footer-admin.ejs') %>

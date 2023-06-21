@@ -7,6 +7,7 @@ const getEntries = async (req, res) => {
     const search = new RegExp(`${req.query.search}`, 'i'); // creo una expresión regular a partir de la string recibida en req.body y se la paso como valor al primer 'find()'
 
     const page = req.query.page || 1; // si 'req.query.page' es 'undefined', establezco por defecto que siempre empiece en la página 1
+    
     const limit = req.query.limit || 3; // si 'req.query.limit' es 'undefined', establezco por defecto en 3 el límite de documentos por página
 
     // try/catch mongoose
@@ -16,7 +17,7 @@ const getEntries = async (req, res) => {
 
             const entries = await Entry.paginate( // utilizo el método 'paginate()' (funciona igual que el 'find()') del módulo 'mongoose-paginate-v2' para la paginación automática
                 { $or: [ { title: search }, { body: search } ] }, // si lo que busca ("search") lo encuentra en "title" o "body", lo devuelve
-                { page, limit } // 'options' del método 'paginate' donde indico los valores (const page, limit) de las propiedades "limit" y "page"
+                { sort: { date: -1 }, page, limit } // Options del método 'paginate' que recibe las propiedades 'sort' (desc order), 'page' y 'limit'
             );
 
             return res.status(200).json({
@@ -26,7 +27,10 @@ const getEntries = async (req, res) => {
 
         } else {
 
-            const entries = await Entry.paginate( {}, { limit, page } ); 
+            const entries = await Entry.paginate(
+                {},
+                { sort: { date: -1 }, limit, page }, // Options: sort (desc order –muestra el más reciente primero–)
+            ); 
 
             return res.status(200).json({
                 ok: true,

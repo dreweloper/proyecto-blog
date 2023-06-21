@@ -1,0 +1,31 @@
+
+.item{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.uppercase{
+    text-transform: uppercase;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.boton{
+    padding: 4px 10px;
+    background: var(--opposite);
+    color: var(--light);
+    border-radius: 4px;
+    text-decoration: none;
+    border: none;
+}
+
+.flex-start{
+    display: flex;
+    justify-self: flex-start;
+}
+
+.pointer{
+    cursor: pointer;
+}

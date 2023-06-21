@@ -2,41 +2,46 @@
 
 <%- include('./templates/nav.ejs') %>
 
-<section class="search-bar">
+<main>
 
-    <form action="/search" method="GET">
-        <input id="search" name="search" class="search-bar-text" type="text" placeholder="Buscador de entradas">
-        <input id="btn-search" class="search-bar-submit" type="submit" value="Buscar">
-    </form>
+    <%- include('./templates/search-bar.ejs') %>
 
-</section>
+    <section class="grid-container">
 
-<section class="grid-container">
+        <% if (entries.length > 0) { %>
 
-    <% if (entries.length > 0) { %>
+            <% if (entries.length == 1) { %>
 
-        <p>Se han encontrado <strong><%= pagination.totalDocs %></strong> resultados con la palabra <strong><%= search %></strong>:</p>
-     
-        <% entries.forEach(entry => { %>
+                <p>Se ha encontrado <strong><%= pagination.totalDocs %></strong> resultado con la palabra <strong><%= search %></strong>:</p>
 
-            <article class="grid-item">
-                <h2> <%= entry.title %> </h2>
-                <p> <%= entry.date %> </p>
-                <img src="<%= entry.photo %>" alt="<%= entry.title %>" title="<%= entry.title %>">
-                <p> <%= entry.extract %> </p>
-                <a href="/entry/<%= entry._id %>" class="boton">Leer más</a>
-            </article>
+            <% } else { %>
+             
+                <p>Se han encontrado <strong><%= pagination.totalDocs %></strong> resultados con la palabra <strong><%= search %></strong>:</p>
+             
+            <% } %>
+    
+            <% entries.forEach(entry => { %>
+    
+                <article class="grid-item">
+                    <h2> <%= entry.title %> </h2>
+                    <p> <%= entry.date.substring(0, 10).split('-').reverse().join('-').replaceAll('-', '/') %> </p>
+                    <img src="<%= entry.photo %>" alt="<%= entry.title %>" title="<%= entry.title %>">
+                    <p> <%= entry.extract %> </p>
+                    <a href="/entry/<%= entry._id %>" class="boton">Leer más</a>
+                </article>
+             
+            <% }) %>
+    
+        <% } else { %>
          
-        <% }) %>
+            <p> No se han encontrado entradas que contengan la palabra <strong><%= search %></strong>. </p>
+    
+        <% } %>
+    
+    </section>
+    
+    <%- include('./templates/pagination-result.ejs') %>
 
-    <% } else { %>
-     
-        <p>No se han encontrado entradas que contengan la palabra <strong><%= search %></strong>.</p>
-
-    <% } %>
-
-</section>
-
-<%- include('./templates/pagination-result.ejs') %>
+</main>
 
 <%- include('./templates/footer.ejs') %>
