@@ -4,14 +4,14 @@
     grid-template-columns: 1fr;
     width: 100%;
     max-width: 992px;
-    gap: 40px;
+    gap: 30px;
     margin: 0 auto;
 
     .grid-item {
         width: 90%;
-        padding: 10px 0;
-        /* margin: 10px auto; */
+        /* padding: 10px 0; */
         border-bottom: 1px solid var(--grey);
+        margin: 0 auto;
 
         & > * {
             margin: 10px 0;
