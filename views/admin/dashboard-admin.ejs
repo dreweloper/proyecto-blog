@@ -8,7 +8,7 @@
 
     <section class="grid-container-admin">
 
-        <a class="add-entry" href="/dashboard-admin/form-new"> Crear entrada </a>
+        <a class="btn-admin" href="/dashboard-admin/form-new"> Crear entrada </a>
 
         <% if (entries.length > 0) { %>
 
@@ -30,9 +30,9 @@
 
                     <div class="buttons">
 
-                        <a href="/dashboard-admin/form-edit/<%= item._id %>"> Editar entrada </a>
+                        <a class="btn-admin" href="/dashboard-admin/form-edit/<%= item._id %>"> Editar entrada </a>
 
-                        <a href="/dashboard-admin/delete/<%= item._id %>"> Eliminar entrada </a>
+                        <a class="btn-admin" href="/dashboard-admin/delete/<%= item._id %>"> Eliminar entrada </a>
 
                     </div> 
 
