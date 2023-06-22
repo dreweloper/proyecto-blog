@@ -1,25 +1,29 @@
 <% if (pagination.totalPages > 1) { %>
 
-    <div id="paginate" class="paginate">
+    <section id="paginate" class="paginate">
 
         <% if (pagination.prevPage != null) { %>
 
-            <a href="http://localhost:3000/dashboard-admin/?page=<%= pagination.prevPage %>" id="btn-prev" data-page="<%= pagination.prevPage %>"> << </a>
+            <a href="http://localhost:3000/dashboard-admin/?page=<%= pagination.prevPage %>" id="btn-prev" data-page="<%= pagination.prevPage %>">
+            
+                <i class="fa-solid fa-arrow-left"></i>
+            
+            </a>
             
         <% } %>
 
-        <% if (pagination.totalPages > 1) { %>
-
-            <a href="http://localhost:3000/dashboard-admin/?page=<%= pagination.page %>"> <%= pagination.page %> </a>
-            
-        <% } %>
+        <p> <%= pagination.page %> </p>
 
         <% if (pagination.nextPage != null) { %>
 
-            <a href="http://localhost:3000/dashboard-admin/?page=<%= pagination.nextPage %>" id="btn-next" data-page="<%= pagination.nextPage %>"> >> </a>
+            <a href="http://localhost:3000/dashboard-admin/?page=<%= pagination.nextPage %>" id="btn-next" data-page="<%= pagination.nextPage %>">
+            
+                <i class="fa-solid fa-arrow-right"></i>
+            
+            </a>
             
         <% } %>
 
-    </div>
+    </section>
     
 <% } %>

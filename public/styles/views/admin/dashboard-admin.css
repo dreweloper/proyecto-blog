@@ -23,7 +23,7 @@
         width: fit-content;
         font-size: 0.9rem;
         padding: 10px;
-        border-radius: 20px;
+        border-radius: 10px;
         color: var(--white);
         background-color: var(--accent);
     }
