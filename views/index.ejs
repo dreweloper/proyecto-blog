@@ -13,11 +13,21 @@
             <% entries.forEach(entry => { %>
 
                 <article class="grid-item">
+
                     <h2> <%= entry.title %> </h2>
+
                     <p> <%= entry.date.substring(0, 10).split('-').reverse().join('-').replace(/-/g, '/') %> </p>
-                    <img src="<%= entry.photo %>" alt="<%= entry.title %>" title="<%= entry.title %>">
+
+                    <div>
+
+                        <img src="<%= entry.photo %>" alt="<%= entry.title %>" title="<%= entry.title %>">
+
+                    </div>
+
                     <p> <%= entry.extract %> </p>
-                    <a class="boton" href="/entry/<%= entry._id %>">Leer más</a>
+
+                    <a href="/entry/<%= entry._id %>"> Leer más </a>
+
                 </article>
 
             <% }) %>
