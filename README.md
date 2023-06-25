@@ -21,10 +21,6 @@ Este proyecto consiste en una aplicación web de un blog con entradas, desarroll
 - Interfaz de usuario responsive con menú hamburguesa en dispositivos móviles.
 - Documentación del código utilizando JSDoc para una mejor comprensión y mantenibilidad.
 
-## Despliegue
-
-La aplicación está desplegada como *web service* en Render: [https://proyecto-blog.onrender.com](https://proyecto-blog.onrender.com).
-
 ---
 
 ## Instalación
@@ -89,8 +85,6 @@ La aplicación está desplegada como *web service* en Render: [https://proyecto-
 
 - En el dashboard, puedes crear nuevas entradas, editar entradas existentes y eliminar entradas.
 - Utiliza las opciones del menú para realizar las operaciones deseadas.
-
-
 
 #### Obtención de las credenciales del administrador
 
