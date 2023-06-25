@@ -48,7 +48,7 @@
     }
 
     .nav-menu_visible {
-        left: 70%; /* clase que aplicará la transición para que aparezca el nav-menu */
+        left: 55%; /* clase que aplicará la transición para que aparezca el nav-menu */
     }
 }
 
@@ -69,9 +69,9 @@
 } /* 768px end */
   
   
-/* 992px *************************/
+/* 1200px *************************/
   
-@media screen and (min-width:992px) {
+@media screen and (min-width:1200px) {
 
     .navbar {
 
