@@ -7,6 +7,7 @@
 @import './views/templates/pagination.css';
 @import './views/templates/search-bar.css';
 @import './views/admin/dashboard-admin.css';
+@import './views/admin/forms.css';
 
 :root {
 
