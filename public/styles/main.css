@@ -3,6 +3,7 @@
 @import './normalize.css';
 @import './views/index.css';
 @import './views/login.css';
+@import './views/templates/nav.css';
 @import './views/templates/pagination.css';
 @import './views/templates/search-bar.css';
 @import './views/admin/dashboard-admin.css';
@@ -38,25 +39,33 @@ body {
 
 header {
     display: flex;
+    position: fixed;
+    height: 70px;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
     width: 100%;
     height: 80px;
     color: var(--white);
     background-color: var(--dark);
+    z-index: 100;
 }
 
 main {
+    position: absolute;
+    top: 80px;
     width: 100%;
     min-height: calc(100vh - (var(--standard-height) + var(--standard-height)));
 }
 
-footer {
+/* footer {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 80px;
     background-color: var(--dark);
-}
+} */
 
 img {
     width: 100%;
