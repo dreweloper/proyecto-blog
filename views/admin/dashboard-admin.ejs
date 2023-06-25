@@ -2,32 +2,47 @@
 
 <%- include('./templates/nav-admin.ejs') %>
 
-<main>
+<main class="dashboard-admin">
 
-    <h2 class="uppercase text-center">Dashboard admin</h2>
+    <h1> Dashboard admin </h1>
 
-    <section class="grid-container">
+    <section class="grid-container-admin">
 
-        <a class="boton flex-start" href="/dashboard-admin/form-new">Crear entrada</a>
+        <a class="btn-admin" href="/dashboard-admin/form-new"> Crear entrada </a>
 
         <% if (entries.length > 0) { %>
 
             <% entries.forEach(item => { %>
 
-                <article class="grid-item">
-                    <h3> <%= item.title %> </h3>
-                    <img src="<%= item.photo %>" alt="<%= item.title %>" title="<%= item.title %>">
+                <article class="grid-item-admin">
+
+                    <h2> <%= item.title %> </h2>
+
+                    <div>
+
+                        <img src="<%= item.photo %>" alt="<%= item.title %>" title="<%= item.title %>">
+
+                    </div>
+
                     <p> <%= item.extract %> </p>
+
                     <p> <%= item.date.substring(0, 10).split('-').reverse().join('-').replace(/-/g, '/') %> </p>
-                    <a class="boton" href="/dashboard-admin/form-edit/<%= item._id %>">Editar entrada</a>
-                    <a class="boton" href="/dashboard-admin/delete/<%= item._id %>">Eliminar entrada</a>
+
+                    <div class="buttons">
+
+                        <a class="btn-admin" href="/dashboard-admin/form-edit/<%= item._id %>"> Editar entrada </a>
+
+                        <a class="btn-admin" href="/dashboard-admin/delete/<%= item._id %>"> Eliminar entrada </a>
+
+                    </div> 
+
                 </article>
             
             <% }) %>
 
         <% } else { %>
         
-            <p>No hay entradas…</p>
+            <p> No hay entradas… </p>
         
         <% } %>
 

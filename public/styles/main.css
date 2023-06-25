@@ -1,16 +1,21 @@
-/* EXT */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
-/* INT */
 @import './normalize.css';
+@import './views/index.css';
+@import './views/login.css';
+@import './views/templates/nav.css';
+@import './views/templates/pagination.css';
+@import './views/templates/search-bar.css';
+@import './views/admin/dashboard-admin.css';
+@import './views/admin/forms.css';
 
-/* VARIABLES */
 :root {
 
     /* Colors */
     --white: #fff;
     --dark: #1a1e1e;
     --accent: #f37262;
+    --grey: #d5d3d3;
     --header-bg: #fefbff;
     --main-first-bg: #ffd346;
     --main-second-bg: #fdfeff;
@@ -35,24 +40,36 @@ body {
 
 header {
     display: flex;
+    position: fixed;
+    height: 80px;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
     width: 100%;
     height: 80px;
-    background-color: var(--header-bg);
+    color: var(--white);
+    background-color: var(--dark);
+    z-index: 100;
 }
 
 main {
+    position: absolute;
+    top: 80px;
     width: 100%;
     min-height: calc(100vh - (var(--standard-height) + var(--standard-height)));
-    background-color: var(--main-first-bg);
 }
 
-footer {
+/* footer {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 80px;
-    background-color: var(--footer-bg);
+    background-color: var(--dark);
+} */
+
+img {
+    width: 100%;
 }
 
 /* Restablecer propiedades de estilo */

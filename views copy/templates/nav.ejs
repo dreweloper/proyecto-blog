@@ -1,9 +1,9 @@
 <header class="header">
 
-    <nav class="navbar">
+    <nav class="nav">
 
-        <a href="/" class="logo"> El Blog </a>
-
+        <a href="/" class="logo">El Blog</a>
+        
         <button class="nav-toggle" aria-label="Open menu">
 
             <i id="btn-bars" class="fa-solid fa-bars"></i>
@@ -12,28 +12,28 @@
 
         <ul class="nav-menu">
 
-            <% if (token != '' ) { %>
+            <% if (token != '') { %>
 
                 <li class="nav-menu-item">
 
-                    <a href="/dashboard-admin" class="nav-menu-link"> Dashboard </a>
+                    <a href="/dashboard-admin" class="nav-menu-link">Dashboard</a>
 
                 </li>
 
                 <li class="nav-menu-item">
 
-                    <a id="logout" href="/logout" class="nav-menu-link"> Logout </a>
+                    <a id="logout" href="/logout" class="nav-menu-link">Log Out</a>
 
                 </li>
 
             <% } else { %>
-
+             
                 <li class="nav-menu-item">
 
-                    <a href="/login" class="nav-menu-link"> Login </a>
-
+                    <a href="/login" class="nav-menu-link">Log In</a>
+                    
                 </li>
-
+             
             <% } %>
 
         </ul>
