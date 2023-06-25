@@ -10,20 +10,20 @@ Este proyecto consiste en una aplicación web de un blog con entradas, desarroll
 
 ## Características principales
 
-- Interfaz de usuario responsive con menú hamburguesa en dispositivos móviles.
+- Renderización dinámica de vistas utilizando el motor de plantillas EJS.
+- Base de datos noSQL (MongoDB) para almacenar las entradas y los usuarios.
+- Autenticación de administrador con JSON Web Tokens (JWT) almacenado en las cookies.
 - Funcionalidad de búsqueda que busca coincidencias en el título y el extracto de las entradas.
 - Manejo de errores para mejorar la experiencia del usuario y facilitar la depuración.
 - Paginación para mostrar las entradas tanto en el lado del usuario como en el dashboard del admin.
-- Autenticación de administrador con JSON Web Tokens (JWT) almacenado en las cookies.
 - Utilización de express-validator para la validación de los campos del formulario de inicio de sesión.
-- Base de datos noSQL (MongoDB) para almacenar las entradas y los usuarios.
-- Renderización dinámica de vistas utilizando el motor de plantillas EJS.
-- Documentación del código utilizando JSDoc para una mejor comprensión y mantenibilidad.
 - Gestión de imágenes utilizando el paquete Multer.
+- Interfaz de usuario responsive con menú hamburguesa en dispositivos móviles.
+- Documentación del código utilizando JSDoc para una mejor comprensión y mantenibilidad.
 
 ## Despliegue
 
-La aplicación está desplegada como un servicio web en Render. Puedes acceder a travésd el siguiente enlace: [https://proyecto-blog.onrender.com](https://proyecto-blog.onrender.com).
+La aplicación está desplegada como *web service* en Render: [https://proyecto-blog.onrender.com](https://proyecto-blog.onrender.com).
 
 ---
 
@@ -90,9 +90,9 @@ La aplicación está desplegada como un servicio web en Render. Puedes acceder a
 - En el dashboard, puedes crear nuevas entradas, editar entradas existentes y eliminar entradas.
 - Utiliza las opciones del menú para realizar las operaciones deseadas.
 
----
 
-## Obtención de las credenciales del administrador
+
+#### Obtención de las credenciales del administrador
 
 Si estás interesado en contribuir a este proyecto o necesitas acceder al dashboard del administrador, por favor, ponte en contacto conmigo para solicitar las credenciales. Puedes hacerlo de la siguiente manera:
 

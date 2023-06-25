@@ -1,16 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 @import './normalize.css';
-@import './roots.css';
+@import './views/index.css';
+@import './views/login.css';
+@import './views/templates/nav.css';
+@import './views/templates/pagination.css';
+@import './views/templates/search-bar.css';
+@import './views/admin/dashboard-admin.css';
+@import './views/admin/forms.css';
 
-@import './layouts/header.css';
-@import './layouts/searchBar.css';
-@import './layouts/entriesCards.css';
-@import './layouts/entriesForm.css';
-@import './layouts/loginForm.css';
-@import './layouts/pagination.css';
+:root {
 
+    /* Colors */
+    --white: #fff;
+    --dark: #1a1e1e;
+    --accent: #f37262;
+    --grey: #d5d3d3;
+    --header-bg: #fefbff;
+    --main-first-bg: #ffd346;
+    --main-second-bg: #fdfeff;
+    --footer-bg: #fefbff;
 
+    /* Sizes */
+    --standard-height: 80px;
+
+}
 
 * {
     padding: 0;
@@ -18,22 +32,39 @@
     box-sizing: border-box;
 }
 
+/* SELECTORES ETIQUETA */
+
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+}
+
+header {
+    display: flex;
+    position: fixed;
+    height: 80px;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 100%;
+    height: 80px;
+    color: var(--white);
+    background-color: var(--dark);
+    z-index: 100;
 }
 
 main {
     position: absolute;
-    top: var(--height-standard);
+    top: 80px;
     width: 100%;
-    min-height: calc(100vh - (var(--height-standard)));
-    padding-top: 20px;
-    background-color: var(--medium);
+    min-height: calc(100vh - (var(--standard-height) + var(--standard-height)));
 }
 
 /* footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: var(--height-standard);
+    height: 80px;
     background-color: var(--dark);
 } */
 
@@ -41,7 +72,8 @@ img {
     width: 100%;
 }
 
-/* Restablecer las propiedades de estilo */
+/* Restablecer propiedades de estilo */
+
 a {
     color: inherit;
     text-decoration: none;
@@ -49,7 +81,6 @@ a {
     cursor: pointer;
 }
 
-/* Restablecer las propiedades de estilo */
 button {
     background: none;
     border: none;
