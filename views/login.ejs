@@ -11,30 +11,34 @@
       <div class="input-parent">
 
       <label for="email"> E-mail: </label>
-      <input id="email" name="email" type="text">
+      <input id="email" name="email" type="text" placeholder="E-mail">
 
       </div>
 
       <div class="input-parent">
 
       <label for="password"> Password: </label>
-      <input id="password" name="password" type="password">
+      <input id="password" name="password" type="password" placeholder="Password">
 
       </div>
 
       <input type="submit" class="login-submit" value="Iniciar sesión">
 
+      <% if (error.length> 0) { %>
+
+        <div class="login-errors">
+
+        <% error.forEach(item=> { %>
+
+          <p> <%= item.msg %> </p>
+    
+        <% }) %>
+
+        </div>
+    
+      <% } %>
+
     </form>
-
-    <% if (error.length> 0) { %>
-
-    <% error.forEach(item=> { %>
-
-      <p> <%= item.msg %> </p>
-
-    <% }) %>
-
-    <% } %>
 
 </main>
 
