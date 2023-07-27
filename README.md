@@ -25,6 +25,8 @@ Este proyecto consiste en una aplicación web de un blog con entradas, desarroll
 
 La aplicación se encuentra desplegada en [Render](https://proyecto-blog-p25u.onrender.com) como *web service*.
 
+***Nota importante:** al tratarse de una suscripción gratuita, el servidor puede tardar un poco en arrancar. Gracias por tu paciencia y comprensión.*
+
 ---
 
 ## Instalación
