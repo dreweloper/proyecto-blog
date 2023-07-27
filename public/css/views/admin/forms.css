@@ -42,6 +42,7 @@
             border-radius: 10px;
             color: var(--white);
             background-color: var(--accent);
+            cursor: pointer;
         }
     }
 }
