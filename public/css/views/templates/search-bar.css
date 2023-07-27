@@ -33,6 +33,7 @@
             width: 80px;
             color: var(--white);
             background-color: var(--accent);
+            cursor: pointer;
         }
     }
 }
